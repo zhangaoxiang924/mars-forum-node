@@ -4,6 +4,9 @@
 /build/*
 /rev/*
 /node_modules/*
+/public/css
+/public/js
+/public/img
 
 # Windows image file caches
 Thumbs.db
