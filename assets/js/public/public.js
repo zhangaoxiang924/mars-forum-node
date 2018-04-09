@@ -156,8 +156,9 @@ const axiosAjax = (arg) => {
 
     axios(opt).then(function (response) {
         const data = response.data
-
         $('#ajaxLoading').remove()
+        layer.msg(data)
+
         if (fn) {
             fn.call(this, data)
         }
