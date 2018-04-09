@@ -5,6 +5,7 @@
  */
 
 import axios from 'axios'
+import '../../../node_modules/layui-layer/dist/layer.js'
 
 const isPc = () => {
     const userAgent = window.navigator.userAgent.toLowerCase()
@@ -161,7 +162,7 @@ const axiosAjax = (arg) => {
             fn.call(this, data)
         }
     }).catch(function (error) {
-        console.log(error)
+        layer.msg(error)
     })
 }
 

@@ -83,10 +83,7 @@ gulp.task('connect', () => {
         root: ['public'],
         host: config.host,
         port: config.port,
-        livereload: true,
-        middleware: (connect, opt) => {
-            return config.proxy
-        }
+        livereload: true
     })
 })
 gulp.task('watch', () => {
