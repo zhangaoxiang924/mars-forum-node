@@ -3,9 +3,12 @@
  * Time：2018-04-08 15:45
  * Description：index
  */
-
 @import "./public/normalize";
 @import "./public/public";
 @import "./public/header";
 @import "./public/footer";
 @import "./index/banner";
+
+body {
+    background: url("../img/blue.png") no-repeat center;
+}

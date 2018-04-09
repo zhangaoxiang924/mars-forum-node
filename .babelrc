@@ -1,14 +1,21 @@
 {
   "presets": [
     [
-      "es2015",
+      "env",
       {
-        "modules": false
+        "targets": {
+          "browsers": [
+            "last 5 versions",
+            "ie >= 9"
+          ]
+        }
       }
     ],
     "stage-0"
   ],
   "plugins": [
-    "transform-class-properties"
+    "transform-runtime",
+    "transform-class-properties",
+    "transform-decorators-legacy"
   ]
 }

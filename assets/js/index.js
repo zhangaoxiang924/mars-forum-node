@@ -5,6 +5,7 @@
  */
 
 import {pageLoadingHide, axiosAjax, proxyUrl} from './public/public'
+import '../../node_modules/layui-layer/dist/layer.js'
 
 $(function () {
     pageLoadingHide()
@@ -18,6 +19,7 @@ $(function () {
             datatwo: 'two'
         },
         fn: function (data) {
+            layer.msg('请求成功')
             console.log(data)
         }
     })
