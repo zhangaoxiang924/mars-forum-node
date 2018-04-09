@@ -44,13 +44,14 @@
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "ejs": "~2.5.7",
-    "express": "~4.16.0",
+    "express": "^4.16.3",
     "http-errors": "~1.6.2",
     "http-proxy-middleware": "^0.17.4",
     "js-cookie": "^2.2.0",
     "layer": "^0.1.0",
     "layui-layer": "^1.0.9",
     "morgan": "~1.9.0",
+    "nodemon": "^1.17.3",
     "simditor": "^2.3.6"
   }
 }
