@@ -1,7 +1,7 @@
 /**
  * Author：zhoushuanglong
  * Time：2018-04-09 22:41
- * Description：gulp-manifest-replace
+ * Description：gulp-str-replace
  */
 
 const through = require('through-gulp')
