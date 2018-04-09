@@ -7,6 +7,7 @@
 /public/css
 /public/js
 /public/img
+yarn.lock
 
 # Windows image file caches
 Thumbs.db

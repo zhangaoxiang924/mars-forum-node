@@ -7,6 +7,7 @@ var logger = require('morgan')
 var indexRouter = require('./routes/index')
 var usersRouter = require('./routes/users')
 var proxyRouter = require('./routes/proxy')
+var invitationRouter = require('./routes/invitation')
 
 var app = express()
 app.use('/api', proxyRouter)
@@ -23,6 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', indexRouter)
 app.use('/users', usersRouter)
+app.use('/invitation', invitationRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
