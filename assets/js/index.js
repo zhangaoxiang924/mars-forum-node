@@ -4,7 +4,7 @@
  * Description：Description
  */
 
-import {pageLoadingHide, axiosAjax, proxyUrl} from './public/public'
+import {pageLoadingHide} from './public/public'
 import '../../node_modules/layui-layer/dist/layer.js'
 
 $(function () {
