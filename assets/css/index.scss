@@ -8,7 +8,8 @@
 @import "./public/header";
 @import "./public/footer";
 @import "./index/banner";
+@import "./index/content";
 
-body {
-    background: url("../img/blue.png") no-repeat center;
+.main {
+    width: 100%;
 }

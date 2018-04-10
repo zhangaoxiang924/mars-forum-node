@@ -3,7 +3,75 @@
  * Time：2018-04-08 15:51
  * Description：banner
  */
+.forum-banner {
+    position: relative;
+    width: 100%;
+    height: 190px;
+    margin-top: 58px;
+    background: #ffd100;
 
-.banner {
-    background: url("../../img/blue.png") no-repeat center;
+    .banner-close {
+        position: absolute;
+        right: 30px;
+        top: 20px;
+        z-index: 5;
+        cursor: pointer;
+
+        img {
+            width: 18px;
+            height: 18px;
+        }
+    }
+
+    .banner-box {
+        position: relative;
+        width: 1200px;
+        height: 100%;
+        margin: 0 auto;
+
+        .banner-img {
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .banner-logo-registration {
+            position: absolute;
+            right: 0;
+            top: 67px;
+            width: 255px;
+            height: 45px;
+
+            p {
+                width: 118px;
+                height: 43px;
+                border: 1px #222 solid;
+                float: left;
+                text-align: center;
+                border-radius: 3px;
+                line-height: 43px;
+                cursor: pointer;
+                font-size: 18px;
+
+                &.logo {
+                    color: #222;
+
+                    &:hover {
+                        color: #3a3a3a;
+                    }
+                }
+
+                &.registration {
+                    color: #fff;
+                    background: #252422;
+                    margin-left: 15px;
+
+                    &:hover {
+                        background: #3a3a3a;
+                    }
+                }
+            }
+        }
+    }
 }
