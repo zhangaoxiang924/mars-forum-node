@@ -33,13 +33,11 @@ $(function () {
 
     // 中间左侧
     $('#leftTop li').on('click', function () {
-        let index = $(this).index()
         $('.list-tab').removeClass('show')
         $(this).addClass('active').siblings('li').removeClass('active')
         $('#leftBottom li').removeClass('active')
     })
     $('#leftBottom li').on('click', function () {
-        let index = $(this).index()
         $('.list-tab').addClass('show')
         $(this).addClass('active').siblings('li').removeClass('active')
         $('#leftTop li').removeClass('active')
