@@ -4,25 +4,11 @@
  * Description：Description
  */
 
-import {pageLoadingHide, axiosAjax, proxyUrl} from './public/public'
+import {pageLoadingHide} from './public/public'
 import '../../node_modules/layui-layer/dist/layer.js'
 
 $(function () {
     pageLoadingHide()
-    axiosAjax({
-        type: 'post',
-        url: proxyUrl + '/info/news/columnadd',
-        contentType: 'application/x-www-form-urlencoded',
-        formData: true,
-        params: {
-            dataone: 'one',
-            datatwo: 'two'
-        },
-        fn: function (data) {
-            layer.msg('请求成功')
-            console.log(data)
-        }
-    })
     // 中间swiper
     let conterSwiper = new Swiper('.swiper-c-top', {
         pagination: '.swiper-pagination',
