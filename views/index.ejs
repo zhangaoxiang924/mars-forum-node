@@ -3,8 +3,13 @@ plugin: ['http://static.huoxing24.com/assets/swiper.min.css'],
 private: ['./css/index.css']
 }) %>
 
-<div>
-    index
+<div class="main clearfix">
+    <%- include('index/banner', {
+    warrior: '数据'
+    }) %>
+    <%- include('index/content', {
+    warrior: '数据'
+    }) %>
 </div>
 
 <%- include('./public/footer', {

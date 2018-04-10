@@ -165,6 +165,11 @@ const axiosAjax = (arg) => {
     })
 }
 
+const utils = {
+    searchFunc: function () {
+    }
+}
+
 const proxyUrl = '/api'
 
 export {
@@ -177,5 +182,6 @@ export {
     getQueryString,
     pageLoadingHide,
     axiosAjax,
+    utils,
     proxyUrl
 }
