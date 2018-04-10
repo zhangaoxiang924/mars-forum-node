@@ -141,7 +141,6 @@ footer {
         padding: 0 120px 20px;
         position: fixed;
         left: 50%;
-        //top: 230px;
         background: #f6f6f6;
         border-radius: 5px;
         width: 342px;
@@ -150,7 +149,8 @@ footer {
         transform: translate(0, -50%);
         display: none;
 
-        .register {
+        .register,
+        .login {
             display: none;
         }
 

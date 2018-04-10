@@ -104,7 +104,15 @@ header {
                 cursor: pointer;
                 border-radius: 3px;
 
-                &.registration {
+                &.noColorBtn {
+                    margin-right: 8px;
+
+                    &:hover {
+                        color: #cfbc1a;
+                    }
+                }
+
+                &.colorBtn {
                     background: #ffe324;
 
                     &:hover {

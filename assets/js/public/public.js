@@ -5,6 +5,7 @@
  */
 
 import axios from 'axios'
+import Cookies from 'js-cookie'
 
 const isPc = () => {
     const userAgent = window.navigator.userAgent.toLowerCase()
@@ -102,7 +103,7 @@ const pageLoadingHide = () => {
     })
  */
 const axiosAjax = (arg) => {
-    const {type, url, params, contentType, formData, fn} = arg
+    const {type, url, params, fn, contentType, formData} = arg
 
     const ajaxLoadingStr = `<div class="lk-loading ajax active" id="ajaxLoading">
     <div class="lk-loading-center">
@@ -124,13 +125,19 @@ const axiosAjax = (arg) => {
         opt = {
             method: type,
             url: url,
-            data: params
+            params: params
         }
     } else if (ajaxType === 'get') {
         opt = {
             method: type,
             url: url,
             params: params
+        }
+    } else if (ajaxType === 'complexpost') {
+        opt = {
+            method: 'post',
+            url: url,
+            data: params
         }
     }
 
@@ -165,6 +172,78 @@ const axiosAjax = (arg) => {
     })
 }
 
+// 登陆时设置 cookies
+const setCookies = (obj) => {
+    for (let key in obj) {
+        Cookies.set('hx_forum_' + key, obj[key], {expires: 7})
+    }
+}
+
+// 注销时删除相关cookies
+const deleteCookies = () => {
+    let strcookie = document.cookie
+    let arrcookie = strcookie.split('; ')
+    for (let i = 0; i < arrcookie.length; i++) {
+        let arr = arrcookie[i].split('=')
+        if (arr[0].indexOf('hx_forum') !== -1) {
+            Cookies.remove(arr[0])
+        }
+    }
+}
+
+const utils = {
+    banner: function () {
+        if (Cookies.get('hx_forum_token') === undefined) {
+            $('.login-registration').html(`<p class="login noColorBtn">登录</p><p class="registration colorBtn">注册</p>`)
+        } else {
+            $('.login-registration').html(`<p class="userName noColorBtn">${Cookies.get('hx_forum_nickName')}</p><p class="logOut colorBtn">注销</p>`)
+        }
+        $('.login').click(function (e) {
+            e.stopPropagation()
+            $('.shade').show()
+            $('.login-con, .login-con .login').show()
+        })
+
+        $('.registration').click(function (e) {
+            e.stopPropagation()
+            $('.shade').show()
+            $('.login-con, .login-con .register').show()
+        })
+
+        $('.shade').click(function () {
+            if ($('.login-con').is(':visible')) {
+                $('.shade').hide()
+                $('.login-con, .login-con .login, .login-con .register').hide()
+            }
+        })
+
+        $('.login-btn').click(function () {
+            axiosAjax({
+                type: 'post',
+                url: '/api/passport/account/login',
+                params: {
+                    phonenum: $('.phone-input').val(),
+                    password: $('.password-input').val()
+                },
+                fn: (data) => {
+                    if (data.code !== 1) {
+                        layer.msg(data.msg)
+                    } else {
+                        setCookies(data.obj)
+                        $('.shade').hide()
+                        $('.login-con, .login-con .login').hide()
+                        window.location.reload()
+                    }
+                }
+            })
+        })
+        $('.login-registration').on('click', '.logOut', function () {
+            deleteCookies()
+            window.location.reload()
+        })
+    }
+}
+
 const proxyUrl = '/api'
 
 export {
@@ -177,5 +256,7 @@ export {
     getQueryString,
     pageLoadingHide,
     axiosAjax,
+    deleteCookies,
+    utils,
     proxyUrl
 }
