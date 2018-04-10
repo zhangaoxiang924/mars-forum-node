@@ -59,3 +59,4 @@ Temporary Items
 src/containers/Index/index.jsx
 src/containers/Main/HeaderNav/index.jsx
 src/locale/zh.js
+config.js
