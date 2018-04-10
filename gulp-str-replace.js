@@ -53,6 +53,8 @@ const replace = (obj) => {
                 for (let key in obj) {
                     newFileContents = fileContent.split(key).join(obj[key])
                     // newFileContents = fileContent.replace(new RegExp(key, 'gim'), obj[key])
+                    // console.log(fileContent.split(key))
+                    // console.log(newFileContents)
                 }
             } else {
                 newFileContents = fileContent
