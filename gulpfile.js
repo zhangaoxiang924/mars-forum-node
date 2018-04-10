@@ -10,6 +10,8 @@ const gulpWebpack = require('gulp-webpack')
 const runSequence = require('run-sequence')
 const connect = require('gulp-connect')
 const stylelint = require('gulp-stylelint')
+const imagemin = require('gulp-imagemin')
+const strReplace = require('./gulp-str-replace')
 
 const webpackconfig = require('./webpack.config.js')
 const config = require('./config.js')
@@ -50,6 +52,9 @@ gulp.task('postcss', ['sass'], () => {
 gulp.task('minifyCss', ['postcss'], () => {
     return gulp.src('public/css/*.css')
         .pipe(cleanCSS({compatibility: 'ie8'}))
+        .pipe(strReplace({
+            '../../': config.publicPath
+        }))
         .pipe(gulp.dest('public/css'))
 })
 
@@ -63,9 +68,14 @@ gulp.task('buildJs', () => {
 })
 
 /* ----------------------------------------处理img---------------------------------------- */
-// 拷贝图片至public
-gulp.task('copyImg', () => {
-    return gulp.src(['assets/img/*', 'assets/img/*/*.*'])
+gulp.task('minifyImg', () => {
+    return gulp.src(['assets/img/*', 'assets/img/*/*'])
+        .pipe(imagemin({
+            optimizationLevel: 5,
+            progressive: true,
+            interlaced: true,
+            multipass: true
+        }))
         .pipe(gulp.dest('public/img'))
         .pipe(connect.reload())
 })
@@ -83,23 +93,20 @@ gulp.task('connect', () => {
         root: ['public'],
         host: config.host,
         port: config.port,
-        livereload: true,
-        middleware: (connect, opt) => {
-            return config.proxy
-        }
+        livereload: true
     })
 })
 gulp.task('watch', () => {
     gulp.watch(['assets/css/*.scss', 'assets/css/*/*.scss'], ['postcss'])
     gulp.watch(['assets/js/*.js', 'assets/js/*/*.js'], ['buildJs'])
-    gulp.watch(['assets/img/*.*', 'assets/img/*/*.*'], ['copyImg'])
+    gulp.watch(['assets/img/*', 'assets/img/*/*'], ['minifyImg'])
 })
 
 /* ----------------------------------------开发与打包---------------------------------------- */
 // 移动端
 gulp.task('dev', (callback) => runSequence(
     'cleanPublic',
-    ['buildJs', 'minifyCss', 'copyImg'],
+    ['buildJs', 'minifyCss', 'minifyImg'],
     ['watch', 'connect'],
     callback
 ))

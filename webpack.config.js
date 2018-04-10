@@ -11,7 +11,7 @@ const JS_PATH = resolve(SRC_PATH, 'js')
 const PUBLIC_PATH = resolve(ROOT_PATH, 'public')
 
 // 获取多页面的每个入口文件，用于配置中的entry
-function getEntry() {
+function getEntry () {
     let dirs = fs.readdirSync(JS_PATH)
     let matchs = []
     let files = {}
@@ -45,7 +45,7 @@ module.exports = {
         rules: [
             {
                 test: /\.(js)?$/,
-                include: ROOT_PATH,
+                include: SRC_PATH,
                 use: [
                     'babel-loader',
                     'eslint-loader'
@@ -72,7 +72,7 @@ module.exports = {
         ]
     },
     resolve: {
-        extensions: ['.js', '.json']
+        extensions: ['.js', '.json', '.scss']
     },
     externals: {
         zepto: '$',
@@ -80,12 +80,6 @@ module.exports = {
     },
     plugins: [
         new UglifyJSPlugin({
-            compress: {
-                warnings: false,
-                drop_console: false
-            },
-            beautify: false,
-            comments: false,
             extractComments: false,
             sourceMap: false
         }),

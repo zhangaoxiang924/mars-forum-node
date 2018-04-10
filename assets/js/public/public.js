@@ -136,9 +136,9 @@ const axiosAjax = (arg) => {
 
     if (formData) {
         let formDataParm = new URLSearchParams()
-        $.each(params, function (key, value) {
-            formDataParm.append(key, value)
-        })
+        for (let key in params) {
+            formDataParm.append(key, params[key])
+        }
 
         opt = {
             method: type,
@@ -155,19 +155,14 @@ const axiosAjax = (arg) => {
 
     axios(opt).then(function (response) {
         const data = response.data
-
         $('#ajaxLoading').remove()
+
         if (fn) {
             fn.call(this, data)
         }
     }).catch(function (error) {
         console.log(error)
     })
-}
-
-const utils = {
-    searchFunc: function () {
-    }
 }
 
 const proxyUrl = '/api'
@@ -182,6 +177,5 @@ export {
     getQueryString,
     pageLoadingHide,
     axiosAjax,
-    utils,
     proxyUrl
 }
