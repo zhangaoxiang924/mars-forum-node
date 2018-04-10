@@ -1,0 +1,102 @@
+<%- include('./public/header', {
+plugin: ['http://static.huoxing24.com/assets/swiper.min.css'],
+private: ['./css/index.css', './css/createForum.css', 'http://static.huoxing24.com/assets/simditor.css']
+}) %>
+
+<div class="createForum-section">
+    <div class="edit-content">
+        <input class="title-input" placeholder="请输入标题" />
+        <TextArea class="editor" autosize></TextArea>
+        <div class="belong-content">
+            <span class="label">所属板块（必填）：</span>
+            <div class="label-item belong-item">
+                <span>新闻板块</span>
+                <ul class="belong-title-content">
+                    <li>板块一</li>
+                    <li>板块二</li>
+                    <li>板块三</li>
+                </ul>
+            </div>
+        </div>
+        <div class="tags-content">
+            <span class="label">文章TAG（必填）：</span>
+            <div class="label-item tags-item">
+                <p class="tags-input">
+                    <span class="selected-btn">
+                        比特币
+                        <i class="close"> × </i>
+                    </span>
+                    <span class="selected-btn">
+                        比特币
+                        <i class="close"> × </i>
+                    </span>
+                    <span class="selected-btn">
+                        比特币
+                        <i class="close"> × </i>
+                    </span>
+                    <input type="text" class="insert-input">
+                </p>
+                <div class="label-btn-content">
+                    <p class="label-btn-title">
+                        <span>热门TAG</span>
+                        <span class="desc">（TAG数量最多不超过3个）</span>
+                    </p>
+                    <ul>
+                        <li>比特币</li>
+                        <li>安全</li>
+                        <li>比特币</li>
+                        <li>安全</li>
+                        <li>比特币</li>
+                        <li>安全</li>
+                        <li>比特币</li>
+                        <li>安全</li>
+                        <li>比特币</li>
+                        <li>安全</li>
+                        <li>比特币</li>
+                        <li>安全</li>
+                        <li>比特币</li>
+                        <li>安全</li>
+                        <li>比特币</li>
+                        <li>安全</li>
+                        <li>板块</li>
+                        <li>板块三</li>
+                        <li>比特币</li>
+                        <li>家小姐说区块链</li>
+                        <li>板块三板块三板块三</li>
+                        <li>板块三</li>
+                        <li>板块三</li>
+                        <li>板块三</li>
+                        <li>板块三</li>
+                        <li>板块三</li>
+                        <li>板块三</li>
+                        <li>板块三</li>
+                        <li>板块三</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="create-bottom">
+        <div class="bottom-content">
+            <div class="sync-huoxing">
+                <input id="checkbox" type="checkbox">
+                <label for="checkbox">
+                    <span>同步到火星财经</span>
+                </label>
+                <i class="tips"></i>
+            </div>
+            <div class="bottom-right">
+                <p class="options">
+                    <span>已保存为草稿 /</span>
+                    <a>舍弃</a>
+                </p>
+                <a class="submit-btn">发布</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('./public/footer', {
+plugin: ['http://static.huoxing24.com/assets/swiper.jquery.min.js'],
+private: ['./js/index.js', './js/createForum.js', './js/editor.js']
+}) %>
