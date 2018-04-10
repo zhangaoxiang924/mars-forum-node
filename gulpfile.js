@@ -53,12 +53,8 @@ gulp.task('minifyCss', ['postcss'], () => {
     return gulp.src('public/css/*.css')
         .pipe(cleanCSS({compatibility: 'ie8'}))
         .pipe(strReplace({
-<<<<<<< HEAD
-            '../../': config.publicPath
-=======
             '../../': config.publicPath,
             '../': '../'
->>>>>>> online-version
         }))
         .pipe(gulp.dest('public/css'))
 })
