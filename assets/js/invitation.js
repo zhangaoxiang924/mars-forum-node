@@ -2,7 +2,7 @@ import {pageLoadingHide} from './public/public'
 
 $(function () {
     pageLoadingHide()
-    console.log('index.js')
+
     $('#pagination').pagination({
         items: 20,
         itemOnPage: 7,
@@ -14,7 +14,6 @@ $(function () {
         },
         onPageClick: function (page, evt) {
             // some code
-            evt.stopDefaultProptype()
         }
     })
 })

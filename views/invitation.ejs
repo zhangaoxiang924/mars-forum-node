@@ -7,27 +7,27 @@ private: ['./css/invitation.css']
     <div class="container clearfix">
         <div class="inv-header-con">
             <ul class="tagList clearfix">
+                <% for( let i = 0; i < data.article_info.user_info.recent_topics.length;i++ ) { let item = data.article_info.user_info.recent_topics[i] %>
                 <li>
-                    <a href="">区块链</a>
+                    <a href="javascript:;"><%= item %></a>
                 </li>
-                <li>
-                    <a href="">Facebook</a>
-                </li>
-                <li>
-                    <a href="">金融</a>
-                </li>
+                <% } %>
             </ul>
 
-            <h2>
-                【图片】 主要是好奇的，主要是好奇的主主要是好奇的主要是好奇的主要是好奇的主要是好奇的主要是好奇的主要是好奇的主要是好奇的主要是好奇的主要是好奇的主要是好奇的主要是好奇的...
-                <p class="unfold">展开阅读全文 <i>∨</i></p>
+            <h2 class=<% if(data.article_info.title.length <= 75) { %>'mb'<% } %>>
+                <%= data.article_info.title %>
+                <% if(data.article_info.title.length > 75){ %>
+                <p class="unfold">展开阅读全文 <i class="iconfont icon-open"></i></p>
+                <% } %>
             </h2>
 
             <div class="control clearfix">
                 <button type="button" class="reply">回复</button>
                 <button type="button" class="collect">收藏</button>
                 <div class="control-group">
-                    <button type="button" class="share"><i></i>分享</button>
+                    <button type="button" class="share">
+                        <i class="iconfont icon-fenxiang"></i>分享
+                    </button>
                 </div>
             </div>
         </div>
@@ -82,25 +82,25 @@ private: ['./css/invitation.css']
                                     结论：欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府欧洲政府</p>
                             </div>
                             <div class="context-unfold">
-                                <p>展开阅读全文 <i>∨</i></p>
+                                <p>展开阅读全文 <i class="iconfont icon-open"></i></p>
                             </div>
                         </div>
                         <div class="reply-action">
                             <p>
-                                <i class="icon"></i>
+                                <i class="iconfont icon-yk_shijian_fill"></i>
                                 发布时间： 3 分钟前
                             </p>
                             <button type="button" class="btn btn-action">
-                                <i class="icon"></i>
+                                <i class="iconfont icon-dianzan"></i>
                                 3,650
                             </button>
                             <button type="button" class="btn btn-action">
-                                <i class="icon"></i>
+                                <i class="iconfont icon-mn_xiaoxi_fill"></i>
                                 6 条评论
                             </button>
                             <button type="button" class="btn btn-action pack-up"><!--和查看全部内容互斥-->
                                 收起
-                                <i class="icon"></i>
+                                <i class="iconfont icon-shouqixiao"></i>
                             </button>
                         </div>
                         <div class="reply-gather">
@@ -127,15 +127,15 @@ private: ['./css/invitation.css']
                                         </div>
                                         <div class="panel-item-action display">
                                             <button type="button" class="btn btn-action">
-                                                <i class="icon"></i>
+                                                <i class="iconfont  icon-dianzan"></i>
                                                 3,650
                                             </button>
                                             <button type="button" class="btn btn-action">
-                                                <i class="icon"></i>
+                                                <i class="iconfont icon-reply"></i>
                                                 回复
                                             </button>
                                             <button type="button" class="btn btn-action">
-                                                <i class="icon"></i>
+                                                <i class="iconfont icon-ai39"></i>
                                                 查看对话
                                             </button>
                                         </div>
@@ -152,7 +152,7 @@ private: ['./css/invitation.css']
                                                 <img src="" alt="">
                                             </div>
                                             <div class="replier-info">
-                                                <p class="h3">李笑来</p>
+                                                <p class="h3">李笑来 <span>回复</span> 凉凉</p>
                                             </div>
                                         </div>
                                         <div class="panel-item-context">
@@ -161,15 +161,15 @@ private: ['./css/invitation.css']
                                         </div>
                                         <div class="panel-item-action">
                                             <button type="button" class="btn btn-action">
-                                                <i class="icon"></i>
+                                                <i class="iconfont icon-dianzan"></i>
                                                 3,650
                                             </button>
                                             <button type="button" class="btn btn-action">
-                                                <i class="icon"></i>
+                                                <i class="iconfont icon-reply"></i>
                                                 回复
                                             </button>
                                             <button type="button" class="btn btn-action">
-                                                <i class="icon"></i>
+                                                <i class="iconfont icon-ai39"></i>
                                                 查看对话
                                             </button>
                                         </div>
@@ -235,7 +235,6 @@ private: ['./css/invitation.css']
                 </dl>
             </div>
         </div>
-
     </div>
 </div>
 
