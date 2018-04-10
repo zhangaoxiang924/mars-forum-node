@@ -53,7 +53,12 @@ gulp.task('minifyCss', ['postcss'], () => {
     return gulp.src('public/css/*.css')
         .pipe(cleanCSS({compatibility: 'ie8'}))
         .pipe(strReplace({
+<<<<<<< HEAD
             '../../': config.publicPath
+=======
+            '../../': config.publicPath,
+            '../': '../'
+>>>>>>> online-version
         }))
         .pipe(gulp.dest('public/css'))
 })
@@ -97,7 +102,7 @@ gulp.task('connect', () => {
     })
 })
 gulp.task('watch', () => {
-    gulp.watch(['assets/css/*.scss', 'assets/css/*/*.scss'], ['postcss'])
+    gulp.watch(['assets/css/*.scss', 'assets/css/*/*.scss'], ['minifyCss'])
     gulp.watch(['assets/js/*.js', 'assets/js/*/*.js'], ['buildJs'])
     gulp.watch(['assets/img/*', 'assets/img/*/*'], ['minifyImg'])
 })

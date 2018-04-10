@@ -795,8 +795,63 @@ footer {
       footer .login-con .login-tips .forget-password {
         float: right; }
 
+/**
+ * Author：zhoushuanglong
+ * Time：2018-04-08 15:51
+ * Description：banner
+ */
+.forum-banner {
+  position: relative;
+  width: 100%;
+  height: 190px;
+  margin-top: 58px;
+  background: #ffd100; }
+  .forum-banner .banner-close {
+    position: absolute;
+    right: 30px;
+    top: 20px;
+    z-index: 5;
+    cursor: pointer; }
+    .forum-banner .banner-close img {
+      width: 18px;
+      height: 18px; }
+  .forum-banner .banner-box {
+    position: relative;
+    width: 1200px;
+    height: 100%;
+    margin: 0 auto; }
+    .forum-banner .banner-box .banner-img img {
+      width: 100%;
+      height: 100%; }
+    .forum-banner .banner-box .banner-logo-registration {
+      position: absolute;
+      right: 0;
+      top: 67px;
+      width: 255px;
+      height: 45px; }
+      .forum-banner .banner-box .banner-logo-registration p {
+        width: 118px;
+        height: 43px;
+        border: 1px #222 solid;
+        float: left;
+        text-align: center;
+        border-radius: 3px;
+        line-height: 43px;
+        cursor: pointer;
+        font-size: 18px; }
+        .forum-banner .banner-box .banner-logo-registration p.logo {
+          color: #222; }
+          .forum-banner .banner-box .banner-logo-registration p.logo:hover {
+            color: #3a3a3a; }
+        .forum-banner .banner-box .banner-logo-registration p.registration {
+          color: #fff;
+          background: #252422;
+          margin-left: 15px; }
+          .forum-banner .banner-box .banner-logo-registration p.registration:hover {
+            background: #3a3a3a; }
+
 body {
-  background: #fff; }
+  background: url("../img/blue-color-red.png"); }
 
 /*# sourceMappingURL=detail.css.map */
 

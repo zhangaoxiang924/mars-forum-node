@@ -9,11 +9,11 @@ var router = express.Router()
 var proxy = require('http-proxy-middleware')
 
 var options = {
-    target: 'http://www.huoxing24.com',
+    target: 'http://wecenter.huoxing24.vip/',
     changeOrigin: true,
     ws: true,
     pathRewrite: {
-        '/api/info/news/columnadd': '/info/news/columnadd'
+        // '/api/account/login': '/account/login'
     }
 }
 
