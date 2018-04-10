@@ -6,23 +6,29 @@
 
 const through = require('through-gulp')
 
+const removeEmptyArrayEle = (arr) => {
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === undefined || arr[i] === '') {
+            arr.splice(i, 1)
+            i = i - 1
+        }
+    }
+    return arr
+}
+
 const replace = (obj) => {
     const stream = through(function (file, encoding, callback) {
         if (file.isNull()) {
-            console.log('file is null!')
             this.push(file)
             return callback()
         }
 
         if (file.isStream()) {
-            console.log('file is stream!')
             this.emit('error')
             return callback()
         }
 
         if (file.isBuffer()) {
-            console.log('file is buffer!')
-
             // 替换manifest已添加hash的文件名
             /* const manifest = JSON.parse(file.contents.toString('utf-8'))
             let newManifest = {}
@@ -51,10 +57,8 @@ const replace = (obj) => {
             let newFileContents = ''
             if (obj) {
                 for (let key in obj) {
-                    newFileContents = fileContent.split(key).join(obj[key])
+                    newFileContents = removeEmptyArrayEle(fileContent.split(key)).join(obj[key])
                     // newFileContents = fileContent.replace(new RegExp(key, 'gim'), obj[key])
-                    // console.log(fileContent.split(key))
-                    // console.log(newFileContents)
                 }
             } else {
                 newFileContents = fileContent
@@ -66,7 +70,6 @@ const replace = (obj) => {
         this.push(file)
         callback()
     }, function (callback) {
-        console.log('processed!')
         callback()
     })
 
