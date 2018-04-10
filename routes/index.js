@@ -5,8 +5,6 @@ const utils = require('../utils/public')
 const axiosAjax = utils.axiosAjax
 const ajaxUrl = utils.ajaxUrl
 
-console.log(utils)
-
 /* GET home page. */
 router.get('/', function (req, res, next) {
     async function indexData () {
@@ -22,13 +20,13 @@ router.get('/', function (req, res, next) {
                 }
             })
         })
-
+        
         return data
     }
 
     indexData().then((data) => {
         console.log(data)
-        res.render('index', {data: data})
+        res.render('index', {...data})
     })
 })
 
