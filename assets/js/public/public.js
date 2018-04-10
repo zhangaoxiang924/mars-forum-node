@@ -165,12 +165,6 @@ const axiosAjax = (arg) => {
     })
 }
 
-const utils = {
-    header: function () {
-        console.log('header func')
-    }
-}
-
 const proxyUrl = '/api'
 
 export {
@@ -183,6 +177,5 @@ export {
     getQueryString,
     pageLoadingHide,
     axiosAjax,
-    utils,
     proxyUrl
 }
