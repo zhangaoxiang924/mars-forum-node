@@ -24,6 +24,7 @@ $(function () {
         defaultImage: 'http://static.huoxing24.com/images/2018/04/09/1523264298837095.png',
         placeholder: '请输入帖子内容',
         toolbar: EDITTOOLBAR,
+        toolbarFloat: false,
         upload: {
             url: `/pic/upload`, // 文件上传的接口地址
             params: null, // 键值对,指定文件上传接口的额外参数,上传的时候随文件一起提交
