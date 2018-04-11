@@ -246,6 +246,10 @@
                                     color: #888;
                                     font-size: 14px;
 
+                                    a {
+                                        color: #888;
+                                    }
+
                                     &.portrait-name,
                                     &.comment {
                                         height: 20px;
@@ -408,6 +412,10 @@
                         margin-bottom: 10px;
                         font-size: 12px;
                         cursor: pointer;
+
+                        a {
+                            color: #666;
+                        }
 
                         &:hover {
                             background: #ffd100;

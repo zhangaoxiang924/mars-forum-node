@@ -12,10 +12,10 @@ const proxyRouter = require('./routes/proxy')
 const createForumRouter = require('./routes/createForum')
 
 const app = express()
-app.use('/api', proxyRouter)
+app.use('/nodeproxy', proxyRouter)
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'))
+app.set('views', path.join(__dirname, 'viewsejs'))
 app.set('view engine', 'ejs')
 
 // logger

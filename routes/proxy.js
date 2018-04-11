@@ -11,7 +11,7 @@ const utils = require('../utils/public')
 // bbs:php接口代理
 const phpApi = proxyJava(utils.ajaxPhpUrl, {
     proxyReqPathResolver: function (req) {
-        const url = req.originalUrl.split('/api/bbs')[1]
+        const url = req.originalUrl.split('/nodeproxy/bbs')[1]
         console.log(url)
         if (url.indexOf('/') === -1) {
             return '/' + url
@@ -27,7 +27,7 @@ for (let value of utils.proxyPhpApi) {
 // pc:java接口代理
 const javaApi = proxyJava(utils.ajaxJavaUrl, {
     proxyReqPathResolver: function (req) {
-        const url = req.originalUrl.split('/api/pc')[1]
+        const url = req.originalUrl.split('/nodeproxy/pc')[1]
         if (url.indexOf('/') === -1) {
             return '/' + url
         } else {

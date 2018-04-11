@@ -20,11 +20,11 @@
             <div class="center-swiper">
                 <div class="swiper-container swiper-c-top">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide"><a href="http://www.huoxing24.com/"></a><img src="./img/swiper.jpg" alt=""><span>为何国内各大互联网公司纷纷研发区块链宠物? </span><p class="img-bg"></p>
+                        <div class="swiper-slide"><a target="_blank" href="http://www.huoxing24.com/"></a><img src="./img/swiper.jpg" alt=""><span>为何国内各大互联网公司纷纷研发区块链宠物? </span><p class="img-bg"></p>
                         </div>
-                        <div class="swiper-slide"><a href="http://www.huoxing24.com/"></a><img src="./img/swiper.jpg" alt=""><span>为何国内各大互联网公司纷纷研发区块链宠物? </span><p class="img-bg"></p>
+                        <div class="swiper-slide"><a target="_blank" href="http://www.huoxing24.com/"></a><img src="./img/swiper.jpg" alt=""><span>为何国内各大互联网公司纷纷研发区块链宠物? </span><p class="img-bg"></p>
                         </div>
-                        <div class="swiper-slide"><a href="http://www.huoxing24.com/"></a><img src="./img/swiper.jpg" alt=""><span>为何国内各大互联网公司纷纷研发区块链宠物? </span><p class="img-bg"></p>
+                        <div class="swiper-slide"><a target="_blank" href="http://www.huoxing24.com/"></a><img src="./img/swiper.jpg" alt=""><span>为何国内各大互联网公司纷纷研发区块链宠物? </span><p class="img-bg"></p>
                         </div>
                     </div>
                     <div class="swiper-pagination"></div>
@@ -41,16 +41,18 @@
                     <div class="list">
                         <div class="introduce">
                             <p>
-                                <a href=""><%= postsList[i].question_content %></a>
+                                <a target="_blank" href="http://bbs.huoxing24.com/?/question/<%= postsList[i].question_content %>"><%= postsList[i].question_content %></a>
                                 <% for(var j = 0; j < postsList[i].topics.length; j++){%>
-                                <span><%= postsList[i].topics[j].topic_title %></span>
+                                <a target="_blank" href="http://bbs.huoxing24.com/?/topic/<%= postsList[i].topics[j].topic_title %>">
+                                    <span><%= postsList[i].topics[j].topic_title %></span>
+                                </a>
                                 <%}%>
                             </p>
                             <div class="user-box">
                                 <div class="portrait">
                                     <span class="portrait-img"><img src=<%= imgUrl + postsList[i].user_info.avatar_file %> alt=""></span>
-                                    <span class="portrait-name"><%= postsList[i].user_info.user_name %></span>
-                                    <span class="time"><%= postsList[i].add_time %></span>
+                                    <span class="portrait-name"><a target="_blank" href="http://bbs.huoxing24.com/?/people/<%= postsList[i].user_info.user_name %>"><%= postsList[i].user_info.user_name %></a></span>
+                                    <span class="time"><%= articleTime[i] %></span>
                                     <span class="comment"><font><%= postsList[i].answer_count %></font>评论</span>
                                 </div>
                             </div>
@@ -59,7 +61,7 @@
                     <%}%>
                     <!-- <div class="list">
                         <div class="introduce">
-                            <p><a href="">首份区块链职场年龄图谱，85后成为行业主力军首份区块链职场年龄图谱，85后成为行业主力军年龄年龄</a><span>比特币</span><span>安全</span></p>
+                            <p><a target="_blank" href="">首份区块链职场年龄图谱，85后成为行业主力军首份区块链职场年龄图谱，85后成为行业主力军年龄年龄</a><span>比特币</span><span>安全</span></p>
                             <div class="user-box">
                                 <div class="portrait">
                                     <span class="portrait-img"><img src="./img/blue.png" alt=""></span>
@@ -81,12 +83,12 @@
             <div class="master">
                 <div class="master-title">
                     <h5>大咖入驻</h5>
-                    <a href="">查看更多</a>
+                    <a target="_blank" href="http://bbs.huoxing24.com/?/people/">查看更多</a>
                 </div>
                 <div class="master-box">
                     <% for(var i = 0; i < master.length; i++){%>
                     <div class="master-list">
-                        <a href="">
+                        <a target="_blank" href="http://bbs.huoxing24.com/?/people/<%= master[i].user_name %>">
                             <p class="portrait"><img src=<%= imgUrl + master[i].avatar_file %> alt=""></p>
                             <p class="name"><%= master[i].user_name %><img src="../img/v.png"></p>
                             <p class="issue">发布<span class="issue-num"><%= master[i].question_count %></span>个话题，获得<span class="reply"><%= master[i].answer_count %></span>个回复</p>
@@ -94,7 +96,7 @@
                     </div>
                     <%}%>
                     <!-- <div class="master-list">
-                        <a href="">
+                        <a target="_blank" href="">
                             <p class="portrait"><img src="./img/blue.png" alt=""><span class="active"></span></p>
                             <p class="name">薛蛮子</p>
                             <p class="issue">发布<span class="issue-num">1000</span>个话题，获得<span class="reply">5000</span>个回复</p>
@@ -105,11 +107,11 @@
             <div class="hot-tags">
                 <div class="tags-title">
                     <h5>热门标签</h5>
-                    <a href="">查看更多</a>
+                    <a target="_blank" href="http://bbs.huoxing24.com/?/topic/channel-hot">查看更多</a>
                 </div>
                 <ul>
                     <% for(var i = 0; i < hotTag.length; i++){%>
-                    <li><%= hotTag[i].topic_title%></li>
+                    <li><a target="_blank" href="http://bbs.huoxing24.com/?/topic/<%= hotTag[i].topic_title%>"><%= hotTag[i].topic_title%></a></li>
                     <%}%>
                 </ul>
             </div>

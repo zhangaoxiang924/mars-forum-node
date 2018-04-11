@@ -7,6 +7,9 @@
 import axios from 'axios'
 import Cookies from 'js-cookie'
 
+const proxyUrlBbs = '/nodeproxy/bbs'
+const proxyUrlPc = '/nodeproxy/pc'
+
 const isPc = () => {
     const userAgent = window.navigator.userAgent.toLowerCase()
 
@@ -182,6 +185,40 @@ const axiosAjax = (arg) => {
     })
 }
 
+/**
+ * Intro: time format
+ */
+const formatTime = (date, str) => {
+    let _str = !str ? '-' : str
+    const zero = (m) => {
+        return m < 10 ? '0' + m : m
+    }
+    let time = new Date(date)
+    let y = time.getFullYear()
+    let m = time.getMonth() + 1
+    let d = time.getDate()
+    if (date) {
+        return y + _str + zero(m) + _str + zero(d)
+    } else {
+        return ''
+    }
+}
+
+const getTime = (publishTime, requestTime, justNow, minuteAgo, hourAgo) => {
+    let limit = parseInt((requestTime - publishTime)) / 1000
+    let content = ''
+    if (limit < 60) {
+        content = justNow
+    } else if (limit >= 60 && limit < 3600) {
+        content = Math.floor(limit / 60) + minuteAgo
+    } else if (limit >= 3600 && limit < 86400) {
+        content = Math.floor(limit / 3600) + hourAgo
+    } else {
+        content = formatTime(publishTime)
+    }
+    return content
+}
+
 // 登陆/注册时设置 cookies
 const setCookies = (obj) => {
     for (let key in obj) {
@@ -245,7 +282,7 @@ const utils = {
             }
             axiosAjax({
                 type: 'post',
-                url: '/api/pc/passport/account/login',
+                url: proxyUrlPc + '/passport/account/login',
                 params: {
                     phonenum: $phoneInput,
                     password: $password
@@ -273,7 +310,7 @@ const utils = {
         $('.getCode').click(function () {
             axiosAjax({
                 type: 'post',
-                url: '/api/pc/passport/account/getverifcode',
+                url: proxyUrlPc + '/passport/account/getverifcode',
                 params: {
                     countrycode: 86,
                     verifcategory: 1, // 验证码类别 1 注册 2 找回密码
@@ -322,7 +359,7 @@ const utils = {
 
             axiosAjax({
                 type: 'post',
-                url: '/api/pc/passport/account/register',
+                url: proxyUrlPc + '/passport/account/register',
                 params: {
                     verifcode: $authCode,
                     password: $password,
@@ -357,9 +394,6 @@ const utils = {
     }
 }
 
-const proxyUrlBbs = '/api/bbs'
-const proxyUrlPc = '/api/pc'
-
 export {
     isPc,
     isIos,
@@ -374,5 +408,7 @@ export {
     isPoneAvailable,
     utils,
     proxyUrlBbs,
-    proxyUrlPc
+    proxyUrlPc,
+    getTime,
+    formatTime
 }
