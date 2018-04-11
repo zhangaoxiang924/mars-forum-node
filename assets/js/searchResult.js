@@ -1,3 +1,8 @@
+/**
+ * Author: yangbo
+ * Time: 2018-04-11 18:11:56
+ * Description: Description
+ */
 import {pageLoadingHide} from './public/public'
 
 $(function () {
