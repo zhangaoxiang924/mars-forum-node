@@ -257,6 +257,7 @@ const utils = {
                         setCookies(data.obj)
                         $('.shade').hide()
                         $('.login-con, .login-con .login').hide()
+                        Cookies.set('hx_forum_loginState', 0)
                         window.location.reload()
                         layer.msg('登陆成功！')
                     }
