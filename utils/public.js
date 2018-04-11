@@ -86,7 +86,7 @@ const formatTime = (date, str) => {
     const zero = (m) => {
         return m < 10 ? '0' + m : m
     }
-    let time = new Date(date)
+    let time = new Date(parseInt(date) * 1000)
     let y = time.getFullYear()
     let m = time.getMonth() + 1
     let d = time.getDate()
@@ -96,7 +96,6 @@ const formatTime = (date, str) => {
         return ''
     }
 }
-
 const getTime = (publishTime, requestTime, justNow, minuteAgo, hourAgo) => {
     let limit = parseInt((requestTime - publishTime)) / 1000
     let content = ''

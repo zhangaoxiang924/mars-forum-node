@@ -6,8 +6,14 @@
 .forum-banner {
     position: relative;
     width: 100%;
-    height: 190px;
     background: #ffd100;
+    height: 190px;
+    overflow: hidden;
+    transition: all 0.5s ease 0s;
+
+    &.banner-show {
+        height: 0;
+    }
 
     .banner-close {
         position: absolute;

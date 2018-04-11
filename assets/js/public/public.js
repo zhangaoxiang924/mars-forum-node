@@ -193,7 +193,7 @@ const formatTime = (date, str) => {
     const zero = (m) => {
         return m < 10 ? '0' + m : m
     }
-    let time = new Date(date)
+    let time = new Date(parseInt(date) * 1000)
     let y = time.getFullYear()
     let m = time.getMonth() + 1
     let d = time.getDate()
@@ -246,6 +246,7 @@ const utils = {
         } else {
             $('.login-registration').html(`<p class="userName noColorBtn" title=${Cookies.get('hx_forum_nickName')}>${Cookies.get('hx_forum_nickName')}</p><p class="logOut colorBtn">注销</p>`)
         }
+
         // 弹出登陆框
         $('.login').click(function (e) {
             e.stopPropagation()
@@ -301,12 +302,14 @@ const utils = {
                 }
             })
         })
+
         // 注销
         $('.login-registration').on('click', '.logOut', function () {
             deleteCookies()
             layer.msg('已注销！')
             window.location.reload()
         })
+
         // 注册获取验证码
         $('.getCode').click(function () {
             axiosAjax({
@@ -326,6 +329,7 @@ const utils = {
                 }
             })
         })
+
         // 注册请求
         $('.register-btn').click(function () {
             let $authCode = $('.auth-code-item input').val()
@@ -391,6 +395,14 @@ const utils = {
             e.stopPropagation()
             $('.login-con .register').show()
             $('.login-con .login').hide()
+        })
+    },
+    banner: function () {
+        // banner关闭与展开
+        const $bannerClose = $('#bannerClose')
+        const $forumBanner = $('#forumBanner')
+        $bannerClose.click(function () {
+            $forumBanner.toggleClass('banner-show')
         })
     },
     footer: function () {
