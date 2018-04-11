@@ -7,11 +7,12 @@
 import Cookies from 'js-cookie'
 import '../../node_modules/layui-layer/dist/layer.js'
 
-import {pageLoadingHide, axiosAjax, utils, proxyUrlBbs} from './public/public'
+import {pageLoadingHide, axiosAjax, utils, proxyUrlBbs, formatTime} from './public/public'
 
 $(function () {
     pageLoadingHide()
     utils.header()
+    utils.banner()
     utils.footer()
 
     let imgUrl = 'http://bbs.huoxing24.com/uploads/avatar/'
@@ -41,14 +42,14 @@ $(function () {
 
             list += `<div class="list">
                         <div class="introduce">
-                            <p><a target="_blank" href="${phpUrl}/?/question/${item.question_content}">${item.question_content}</a>${topicsList}</p>
+                            <p><a target="_blank" href="${phpUrl}/?/question/${item.question_id}">${item.question_content}</a>${topicsList}</p>
                             <div class="user-box">
                                 <div class="portrait">
                                     <a target="_blank" href="${phpUrl}/?/people/${item.user_info.user_name}">
                                         <span class="portrait-img"><img src=${imgUrl + item.user_info.avatar_file} alt=""></span>
                                         <span class="portrait-name">${item.user_info.user_name}</span>
                                     </a>
-                                    <span class="time">${item.add_time}</span>
+                                    <span class="time">${formatTime(item.add_time)}</span>
                                     <span class="comment"><font>${item.answer_count}</font>评论</span>
                                 </div>
                             </div>
