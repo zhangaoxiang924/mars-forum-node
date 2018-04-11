@@ -11,7 +11,7 @@ $(function () {
     pageLoadingHide()
     utils.banner()
     // 中间swiper
-    
+
     let conterSwiper = new Swiper('.swiper-c-top', {
         pagination: '.swiper-pagination',
         paginationClickable: true,
