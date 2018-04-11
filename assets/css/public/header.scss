@@ -104,7 +104,21 @@ header {
                 cursor: pointer;
                 border-radius: 3px;
 
-                &.registration {
+                &.noColorBtn {
+                    margin-right: 8px;
+
+                    &.userName {
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    }
+
+                    &:hover {
+                        color: #cfbc1a;
+                    }
+                }
+
+                &.colorBtn {
                     background: #ffe324;
 
                     &:hover {

@@ -30,48 +30,48 @@
         </div>
     </div>
     <div class="login-con">
+        <!--登录-->
+        <div class="login-con-main login">
+            <h1>登录</h1>
+            <p class="login-error-msg"></p>
+            <div class="login-item">
+                <span><img src="./img/login-phone-number.png"/></span>
+                <input class="phone-input" type="text" placeholder="请输入手机号码"/>
+            </div>
+            <div class="login-item">
+                <span><img src="./img/login-password.png"/></span>
+                <input class="password-input" type="password" placeholder="请输入密码"/>
+            </div>
+            <button class="login-btn">登录</button>
+            <div class="login-tips clearfix">
+                <p>没有账号？<a class="to-register">立即注册</a></p>
+                <!--<a class="forget-password">忘记密码</a>-->
+            </div>
+        </div>
         <!--注册-->
         <div class="login-con-main register">
             <h1>注册</h1>
-            <p class="error-msg show"></p>
-            <div class="login-item phone-item">
+            <p class="error-msg"></p>
+            <div class="login-item register-phone-num">
                 <span><img src="./img/login-phone-number.png"/></span>
                 <input type="text" placeholder="请输入手机号码"/>
             </div>
             <div class="login-item auth-code-item">
                 <span><img src="./img/login-auth-code.png"/></span>
-                <a>获取验证码</a>
+                <a class="getCode">获取验证码</a>
                 <input type="text" placeholder="请输入手机验证码"/>
             </div>
-            <div class="login-item">
-                <span><img src="./img/login-password.png"/></span>
-                <input type="text" placeholder="请输入密码"/>
-            </div>
-            <div class="login-item">
-                <span><img src="./img/login-re-password.png"/></span>
-                <input type="text" placeholder="请再次输入密码"/>
-            </div>
-            <button>注册</button>
-            <div class="login-tips">
-                <p>已有账号？<a>立即登录</a></p>
-            </div>
-        </div>
-        <!--登录-->
-        <div class="login-con-main login">
-            <h1>登录</h1>
-            <p class="login-error-msg" }></p>
-            <div class="login-item">
-                <span><img src="./img/login-phone-number.png"/></span>
-                <input type="text" placeholder="请输入手机号码"/>
-            </div>
-            <div class="login-item">
+            <div class="login-item register-pw">
                 <span><img src="./img/login-password.png"/></span>
                 <input type="password" placeholder="请输入密码"/>
             </div>
-            <button>登录</button>
-            <div class="login-tips clearfix">
-                <p>没有账号？<a>立即注册</a></p>
-                <a class="forget-password">忘记密码</a>
+            <div class="login-item register-pw-confirm">
+                <span><img src="./img/login-re-password.png"/></span>
+                <input type="password" placeholder="请再次输入密码"/>
+            </div>
+            <button class="register-btn">注册</button>
+            <div class="login-tips">
+                <p>已有账号？<a class="to-login">立即登录</a></p>
             </div>
         </div>
     </div>

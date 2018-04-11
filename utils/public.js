@@ -84,7 +84,10 @@ const axiosAjax = (arg) => {
 const ajaxJavaUrl = 'http://www.huoxing24.com'
 const javaPrefix = '/pc'
 const proxyJavaApi = [
-    javaPrefix + '/info/news/getbyid'
+    javaPrefix + '/info/news/getbyid',
+    javaPrefix + '/passport/account/login',
+    javaPrefix + '/passport/account/getverifcode',
+    javaPrefix + '/passport/account/register'
 ]
 
 /**
