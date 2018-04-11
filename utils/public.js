@@ -71,7 +71,7 @@ const axiosAjax = (arg) => {
     })
 }
 
-const ajaxUrl = 'http://www.huoxing24.com'
+const ajaxUrl = 'http://wecenter.huoxing24.vip/'
 
 module.exports = {
     ajaxUrl,

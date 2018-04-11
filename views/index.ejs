@@ -5,11 +5,15 @@ private: ['./css/index.css']
 
 <div class="main clearfix">
     <%- include('index/banner', {
-    warrior: '数据'
+    warrior: ''
     }) %>
-    <div class="ninini"><%= code.toString() %></div>
     <%- include('index/content', {
-    warrior: '数据'
+    leftColumn: sidebar_hot_users,
+    master: sidebar_hot_users,
+    hotTag: sidebar_hot_topics,
+    postsList: posts_list,
+    loginState: wefollow,
+    imgUrl: 'http://wecenter.huoxing24.vip//uploads/avatar/'
     }) %>
 </div>
 

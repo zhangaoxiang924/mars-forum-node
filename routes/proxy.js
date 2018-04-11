@@ -13,7 +13,10 @@ var options = {
     changeOrigin: true,
     ws: true,
     pathRewrite: {
-        // '/api/account/login': '/account/login'
+        '/api': '/',
+        '/api/?/home/ajax/index_actions': '/?/home/ajax/index_actions', // 关注
+        '/api/?/publish/ajax/fetch_question_category/1': '?/publish/ajax/fetch_question_category/1', // 分类栏目
+        '/api/?/': '/?/' // 社区板块内容
     }
 }
 

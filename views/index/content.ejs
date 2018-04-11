@@ -3,17 +3,16 @@
         <div class="c-left">
             <div class="left-top">
                 <ul id="leftTop">
-                    <li class="active"><span><img src="./img/jd.png" alt=""></span>今日焦点</li>
-                    <li><span><img src="./img/jd.png" alt=""></span>我的关注</li>
-                    <li><span><img src="./img/jd.png" alt=""></span>最新内容</li>
+                    <li class="active"><span><img src="./img/jd.png" alt=""></span>今日推荐</li>
+                    <li><span><img src="./img/attention.png" alt=""></span>今日热点</li>
+                    <li><span><img src="./img/hotCont.png" alt=""></span>最新内容</li>
+                    <li data-type=<%= loginState.follow %>><span><img src="./img/attention.png" alt=""></span>我的关注</li>
                 </ul>
             </div>
             <div class="left-bottom">
                 <h5>社区板块</h5>
                 <ul id="leftBottom">
-                    <li><span><img src="./img/jd.png" alt=""></span>币圈打假</li>
-                    <li><span><img src="./img/jd.png" alt=""></span>区块链</li>
-                    <li><span><img src="./img/jd.png" alt=""></span>比特币</li>
+                    <!-- <li><span><img src="./img/jd.png" alt=""></span>币圈打假</li> -->
                 </ul>
             </div>
         </div>
@@ -33,12 +32,32 @@
             </div>
             <div class="content-center-box">
                 <div class="list-tab" id="listTab">
-                    <p class="active">最新<span class="active"></span></p>
-                    <p>最热<span class=""></span></p>
-                    <p>精华<span class=""></span></p>
+                    <p class="active" data-type="new">最新<span class="active"></span></p>
+                    <p data-type="hot">最热<span class=""></span></p>
+                    <p data-type="is_recommend">精华<span class=""></span></p>
                 </div>
                 <div class="list-box">
+                    <% for(var i = 0; i < postsList.length; i++){%>
                     <div class="list">
+                        <div class="introduce">
+                            <p>
+                                <a href=""><%= postsList[i].question_content %></a>
+                                <% for(var j = 0; j < postsList[i].topics.length; j++){%>
+                                <span><%= postsList[i].topics[j].topic_title %></span>
+                                <%}%>
+                            </p>
+                            <div class="user-box">
+                                <div class="portrait">
+                                    <span class="portrait-img"><img src=<%= imgUrl + postsList[i].user_info.avatar_file %> alt=""></span>
+                                    <span class="portrait-name"><%= postsList[i].user_info.user_name %></span>
+                                    <span class="time"><%= postsList[i].add_time %></span>
+                                    <span class="comment"><font><%= postsList[i].answer_count %></font>评论</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <%}%>
+                    <!-- <div class="list">
                         <div class="introduce">
                             <p><a href="">首份区块链职场年龄图谱，85后成为行业主力军首份区块链职场年龄图谱，85后成为行业主力军年龄年龄</a><span>比特币</span><span>安全</span></p>
                             <div class="user-box">
@@ -50,35 +69,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="list">
-                        <div class="introduce">
-                            <p><a href="">首份区块链职场年龄图谱，85后成为行业主力军首份区块链职场年龄图谱，85后成为行业主力军年龄年龄</a><span>比特币</span><span>安全</span></p>
-                            <div class="user-box">
-                                <div class="portrait">
-                                    <span class="portrait-img"><img src="./img/blue.png" alt=""></span>
-                                    <span class="portrait-name">admin</span>
-                                    <span class="time">2小时前</span>
-                                    <span class="comment"><font>20</font>评论</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="list">
-                        <div class="introduce">
-                            <p><a href="">首份区块链职场年龄图谱，85后成为行业主力军首份区块链职场年龄图谱，85后成为行业主力军年龄年龄</a><span>比特币</span><span>安全</span></p>
-                            <div class="user-box">
-                                <div class="portrait">
-                                    <span class="portrait-img"><img src="./img/blue.png" alt=""></span>
-                                    <span class="portrait-name">admin</span>
-                                    <span class="time">2小时前</span>
-                                    <span class="comment"><font>20</font>评论</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </div> -->
                 </div>
-                <div class="more">点击加载更多</div>
+                <div class="more" id="conterMore">点击加载更多</div>
             </div>
         </div>
         <div class="c-right">
@@ -91,34 +84,22 @@
                     <a href="">查看更多</a>
                 </div>
                 <div class="master-box">
+                    <% for(var i = 0; i < master.length; i++){%>
                     <div class="master-list">
+                        <a href="">
+                            <p class="portrait"><img src=<%= imgUrl + master[i].avatar_file %> alt=""></p>
+                            <p class="name"><%= master[i].user_name %><img src="../img/v.png"></p>
+                            <p class="issue">发布<span class="issue-num"><%= master[i].question_count %></span>个话题，获得<span class="reply"><%= master[i].answer_count %></span>个回复</p>
+                        </a>
+                    </div>
+                    <%}%>
+                    <!-- <div class="master-list">
                         <a href="">
                             <p class="portrait"><img src="./img/blue.png" alt=""><span class="active"></span></p>
                             <p class="name">薛蛮子</p>
                             <p class="issue">发布<span class="issue-num">1000</span>个话题，获得<span class="reply">5000</span>个回复</p>
                         </a>
-                    </div>
-                    <div class="master-list">
-                        <a href="">
-                            <p class="portrait"><img src="./img/blue.png" alt=""><span class="active"></span></p>
-                            <p class="name">薛蛮子</p>
-                            <p class="issue">发布<span class="issue-num">1000</span>个话题，获得<span class="reply">5000</span>个回复</p>
-                        </a>
-                    </div>
-                    <div class="master-list">
-                        <a href="">
-                            <p class="portrait"><img src="./img/blue.png" alt=""><span class="active"></span></p>
-                            <p class="name">薛蛮子</p>
-                            <p class="issue">发布<span class="issue-num">1000</span>个话题，获得<span class="reply">5000</span>个回复</p>
-                        </a>
-                    </div>
-                    <div class="master-list">
-                        <a href="">
-                            <p class="portrait"><img src="./img/blue.png" alt=""><span class="active"></span></p>
-                            <p class="name">薛蛮子</p>
-                            <p class="issue">发布<span class="issue-num">1000</span>个话题，获得<span class="reply">5000</span>个回复</p>
-                        </a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="hot-tags">
@@ -127,19 +108,9 @@
                     <a href="">查看更多</a>
                 </div>
                 <ul>
-                    <li>区块链</li>
-                    <li>信任机制</li>
-                    <li>Facebook</li>
-                    <li>领袖峰会</li>
-                    <li>领袖峰会</li>
-                    <li>金融</li>
-                    <li>信任机制</li>
-                    <li>金融</li>
-                    <li>金融</li>
-                    <li>金融</li>
-                    <li>金融</li>
-                    <li>金融</li>
-                    <li>金融</li>
+                    <% for(var i = 0; i < hotTag.length; i++){%>
+                    <li><%= hotTag[i].topic_title%></li>
+                    <%}%>
                 </ul>
             </div>
             <div class="attention">
@@ -153,7 +124,7 @@
                     </p>
                     <p>
                         <img src="./img/hx-ewm.jpg" alt="">
-                        <span>王峰十问</span>
+                        <span>火星财经</span>
                     </p>
                 </div>
             </div>
