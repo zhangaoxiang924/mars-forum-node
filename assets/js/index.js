@@ -16,6 +16,10 @@ $(function () {
 
     let imgUrl = 'http://bbs.huoxing24.com/uploads/avatar/'
     let phpUrl = 'http://bbs.huoxing24.com'
+    
+    $('.banner-close').on('click', function () {
+        $('.forum-banner').slideUp()
+    })
 
     const invitationItem = (data, loadMore) => {
         let dataArr = data.posts_list
@@ -68,7 +72,7 @@ $(function () {
         autoplayDisableOnInteraction: false,
         preventClicks: false
     })
-    conterSwiper.autoplay = true
+    conterSwiper.detachEvents()
 
     // 中间左侧/ top
     async function indexLeftTopData (key, type, page) {
@@ -156,7 +160,7 @@ $(function () {
     indexClassifyData().then((data) => {
         let list = ''
         data.map(function (item, index) {
-            list += `<li data-id=${item.id}><span><img src="./img/jd.png" alt=""></span>${item.title}</li>`
+            list += `<li data-id=${item.id}><span><img src=${item.icon} alt=""></span>${item.title}</li>`
         })
         $('#leftBottom').html(list)
     })
