@@ -12,7 +12,6 @@ const utils = require('../utils/public')
 const phpApi = proxyJava(utils.ajaxPhpUrl, {
     proxyReqPathResolver: function (req) {
         const url = req.originalUrl.split('/nodeproxy/bbs')[1]
-        console.log(url)
         if (url.indexOf('/') === -1) {
             return '/' + url
         } else {

@@ -107,7 +107,7 @@ const getTime = (publishTime, requestTime, justNow, minuteAgo, hourAgo) => {
     } else if (limit >= 3600 && limit < 86400) {
         content = Math.floor(limit / 3600) + hourAgo
     } else {
-        content = format(publishTime)
+        content = formatTime(publishTime)
     }
     return content
 }
@@ -127,13 +127,14 @@ const proxyJavaApi = [
 /**
  * php: bbs接口代理
  */
-const ajaxPhpUrl = 'http://wecenter.huoxing24.vip'
+const ajaxPhpUrl = 'http://bbs.huoxing24.com/'
 const phpPrefix = '/bbs'
 const proxyPhpApi = [
     phpPrefix,
     phpPrefix + '/?/',
     phpPrefix + '/account/ajax/profiles_setting',
     phpPrefix + '/?/home/ajax/index_actions',
+    phpPrefix + '/home/#all__focus',
     phpPrefix + '/?/publish/ajax/fetch_question_category/1'
 ]
 
