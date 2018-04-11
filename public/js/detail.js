@@ -1,1 +1,0 @@
-webpackJsonp([1],{171:function(o,n,c){"use strict";(function(o){o(function(){console.log("detail"),console.log("aaa")})}).call(n,c(52))}},[171]);
