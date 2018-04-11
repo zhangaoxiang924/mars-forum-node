@@ -245,7 +245,7 @@ const utils = {
             }
             axiosAjax({
                 type: 'post',
-                url: '/api/passport/account/login',
+                url: '/api/pc/passport/account/login',
                 params: {
                     phonenum: $phoneInput,
                     password: $password
@@ -255,10 +255,10 @@ const utils = {
                         layer.msg(data.msg)
                     } else {
                         setCookies(data.obj)
-                        layer.msg('登陆成功！')
                         $('.shade').hide()
                         $('.login-con, .login-con .login').hide()
                         window.location.reload()
+                        layer.msg('登陆成功！')
                     }
                 }
             })
@@ -273,7 +273,7 @@ const utils = {
         $('.getCode').click(function () {
             axiosAjax({
                 type: 'post',
-                url: '/api/passport/account/getverifcode',
+                url: '/api/pc/passport/account/getverifcode',
                 params: {
                     countrycode: 86,
                     verifcategory: 1, // 验证码类别 1 注册 2 找回密码
@@ -322,7 +322,7 @@ const utils = {
 
             axiosAjax({
                 type: 'post',
-                url: '/api/passport/account/register',
+                url: '/api/pc/passport/account/register',
                 params: {
                     verifcode: $authCode,
                     password: $password,
@@ -333,11 +333,11 @@ const utils = {
                     if (data.code !== 1) {
                         layer.msg(data.msg)
                     } else {
-                        layer.msg('注册成功！')
                         setCookies(data.obj)
                         $('.shade').hide()
                         $('.login-con, .login-con .register').hide()
                         window.location.reload()
+                        layer.msg('注册成功！')
                     }
                 }
             })
@@ -357,7 +357,8 @@ const utils = {
     }
 }
 
-const proxyUrl = '/api'
+const proxyUrlBbs = '/api/bbs'
+const proxyUrlPc = '/api/pc'
 
 export {
     isPc,
@@ -372,5 +373,6 @@ export {
     deleteCookies,
     isPoneAvailable,
     utils,
-    proxyUrl
+    proxyUrlBbs,
+    proxyUrlPc
 }

@@ -3,18 +3,17 @@ const router = express.Router()
 const utils = require('../utils/public')
 
 const axiosAjax = utils.axiosAjax
-const ajaxUrl = utils.ajaxUrl
+const ajaxPhpUrl = utils.ajaxPhpUrl
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
     async function indexData () {
-        const data = await new Promise((resolve, reject) => {
+        const data = await new Promise((resolve) => {
             axiosAjax({
                 type: 'GET',
-                url: ajaxUrl + '/info/news/getbyid',
-                params: {
-                    id: '2018041015073847256'
-                },
+                url: ajaxPhpUrl + '/',
+                params: {},
+                res: res,
                 fn: function (data) {
                     resolve(data)
                 }
@@ -25,7 +24,6 @@ router.get('/', function (req, res, next) {
     }
 
     indexData().then((data) => {
-        console.log(data)
         res.render('index', {...data})
     })
 })
