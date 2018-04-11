@@ -78,16 +78,23 @@ const axiosAjax = (arg) => {
     })
 }
 
-const ajaxPhpUrl = 'http://wecenter.huoxing24.vip'
+/**
+ * java: pc接口代理
+ */
 const ajaxJavaUrl = 'http://www.huoxing24.com'
-const phpPrefix = '/bbs'
 const javaPrefix = '/pc'
+const proxyJavaApi = [
+    javaPrefix + '/info/news/getbyid'
+]
+
+/**
+ * php: bbs接口代理
+ */
+const ajaxPhpUrl = 'http://wecenter.huoxing24.vip'
+const phpPrefix = '/bbs'
 const proxyPhpApi = [
     phpPrefix,
     phpPrefix + '/account/ajax/profiles_setting'
-]
-const proxyJavaApi = [
-    javaPrefix + '/info/news/getbyid'
 ]
 
 module.exports = {
