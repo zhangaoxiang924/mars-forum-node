@@ -7,26 +7,22 @@ private: ['./css/invitation.css']
     <div class="container clearfix">
         <div class="inv-header-con">
             <ul class="tagList clearfix">
-                <% for( let i = 0; i < article_info.user_info.recent_topics.length;i++ ) { let item = article_info.user_info.recent_topics[i] %>
                 <li>
-                    <a href="javascript:;"><%= item %></a>
+                    <a href="javascript:;">tagItem</a>
                 </li>
-                <% } %>
             </ul>
 
 
             <div class="article-context">
                 <h2>
-                    <%= article_info.title %>
+                    article_info.title
                 </h2>
                 <div class="text">
-                    <p><%= article_info.message %></p>
+                    <p>article_info.message</p>
                 </div>
-                <% if(article_info.message.length > 75){ %>
                 <p class="unfold">展开阅读全文 <i class="iconfont icon-open"></i></p>
-                <% } %>
             </div>
-            <div class="control clearfix" data-id=<%= article_info.id %>>
+            <div class="control clearfix" data-id='article_info.id'>
                 <button type="button" class="reply">回复</button>
                 <button type="button" class="collect">收藏</button>
                 <button type="button" class="share">
@@ -37,12 +33,12 @@ private: ['./css/invitation.css']
         <div class="inv-header-stat">
             <div class="stat-item">
                 <p class="stat-item-title">关注者</p>
-                <p><%= article_info.views %></p>
+                <p>1</p>
             </div>
             <div class="part-line"></div>
             <div class="stat-item">
                 <p class="stat-item-title">浏览量</p>
-                <p><%= article_info.views %></p>
+                <p>1</p>
             </div>
         </div>
     </div>
@@ -54,10 +50,10 @@ private: ['./css/invitation.css']
             <div class="inv-content-reply">
                 <div class="replier clearfix">
                     <div class="replier-img">
-                        <img src=<%= article_info.user_info.avatar_file %> alt="">
+                        <img src='' alt="">
                     </div>
                     <div class="replier-info">
-                        <h3><%= article_info.user_info.user_name %></h3>
+                        <h3>article_info.user_info.user_name</h3>
                         <p>原新东方名师，自称‘中国比特币首富’,著名天使投资人...</p>
                     </div>
                 </div>
@@ -67,49 +63,43 @@ private: ['./css/invitation.css']
             </div>
 
             <div class="inv-reply-list">
-                <h3><%= article_info.comments %>个回答</h3>
+                <h3>article_info.comments 个回答</h3>
                 <div class="inv-reply-list-wrap">
-                    <% for(let i = 0 ; i < comments.length ; i++) { let item = comments[i] %>
                     <div class="list-item">
                         <div class="replier clearfix">
                             <div class="replier-img">
-                                <% if(item.user_info.avatar_file){ %>
-                                <img src=<%= item.user_info.avatar_file %> alt="">
-                                <% } %>
+                                <img src='' alt="">
                             </div>
                             <div class="replier-info">
-                                <p class="h3"><%= item.user_info.user_name %> </p>
+                                <p class="h3">item.user_info.user_name</p>
                                 <p>原新东方名师，自称‘中国比特币首富’,著名天使投资人...</p>
                             </div>
                         </div>
                         <div class="reply-context">
                             <div class="reply-context-show">
                                 <p>
-                                    <%= item.message %>
+                                    item.message
                                 </p>
                             </div>
-                            <% if(item.message.length > 100){ %>
                             <div class="context-unfold">
                                 <p>展开阅读全文 <i class="iconfont icon-open"></i></p>
                             </div>
-                            <% } %>
-
                         </div>
-                        <div class="reply-action" data-uid=<%= item.uid %>>
+                        <div class="reply-action" data-uid='item.uid'>
                             <p>
                                 <i class="iconfont icon-yk_shijian_fill"></i>
-                                发布时间： <%= (function () {
+                                发布时间：<!--(function () {
                                     let minus = new Date().getTime() / 1000 - item.add_time;
                                     let day = Math.floor(minus / (3600 * 24));
                                     let hour = Math.floor((minus - day * 3600 * 24) / 3600);
                                     let minute = Math.floor((minus - day * 3600 * 24 - hour * 3600) / 60);
 
-                                    return day ? `${day}天${hour}小时${minute}分` : (hour ? `${hour}小时${minute}分` : `${minute}分`);
-                                })() %> 钟前
+                                    return `${day}天${hour}小时${minute}分`;
+                                })()--> 3分钟前
                             </p>
                             <button type="button" class="btn btn-action">
                                 <i class="iconfont icon-dianzan"></i>
-                                <%= item.votes %>
+                                item.votes
                             </button>
                             <button type="button" class="btn btn-action">
                                 <i class="iconfont icon-mn_xiaoxi_fill"></i>
@@ -198,7 +188,6 @@ private: ['./css/invitation.css']
                             </div>
                         </div>
                     </div>
-                    <% } %>
                 </div>
             </div>
 
@@ -231,27 +220,18 @@ private: ['./css/invitation.css']
                 </div>
             </div>
 
-            <div class="topic">
-                <dl class="topic-list">
-                    <dd>相关话题</dd>
-                    <dt>
-                        原新东方名师，自称‘中国比特币首富’,著名天使投资人原新东方名师，自称‘中国比特币首富’
-                        <a href="">20个回答</a>
-                    </dt>
-                    <dt>
-                        原新东方名师，自称‘中国比特币首富’,著名天使投资人原新东方名师，自称‘中国比特币首富’
-                        <a href="">20个回答</a>
-                    </dt>
-                    <dt>
-                        原新东方名师，自称‘中国比特币首富’,著名天使投资人原新东方名师，自称‘中国比特币首富’
-                        <a href="">20个回答</a>
-                    </dt>
-                    <dt>
-                        原新东方名师，自称‘中国比特币首富’,著名天使著名天使投资人原新东方名师，自称‘中国比特币首富’
-                        <a href="">20个回答</a>
-                    </dt>
-                </dl>
-            </div>
+            <%- include('./public/topic', {
+            title: '相关',
+            data: [
+            {id:1,message:'原新东方名师名师，自称‘中国比特币首富’,著名天使投资人原新东方名师，自称‘中国比特币首富’!',ans_num:20},
+            {id:2,message:'原新东方名师名师，自称‘中国比特币首富’,著名天使投资人原新东方名师，自称‘中国比特币首富’!',ans_num:15},
+            {id:3,message:'原新东方名师名师，自称‘中国比特币首富’,著名天使投资人原新东方名师，自称‘中国比特币首富’!',ans_num:56},
+            {id:4,message:'原新东方名师名师，自称‘中国比特币首富’,著名天使投资人原新东方名师，自称‘中国比特币首富’!',ans_num:50},
+            {id:5,message:'原新东方名师名师，自称‘中国比特币首富’,著名天使投资人原新东方名师，自称‘中国比特币首富’!',ans_num:100}
+            ]
+            }) %>
+
+
         </div>
     </div>
 </div>

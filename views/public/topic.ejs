@@ -1,0 +1,12 @@
+<div class="topic">
+    <dl class="topic-list">
+        <dd><%= title %>话题</dd>
+        <% for (let i = 0; i < data.length; i++) {
+            let item = data[i] %>
+        <dt>
+            <%= item.message %>
+            <a href="<%= item.url %>" data-ansID=<%= item.id%>><%= item.ans_num %>个回答</a>
+        </dt>
+        <% }%>
+    </dl>
+</div>

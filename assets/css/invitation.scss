@@ -2,15 +2,11 @@
 @import "./public/public";
 @import "./public/header";
 @import "./public/footer";
+@import "./public/topic";
 @import "../font/iconfont.scss";
 
 body {
     background-color: #f5f5f5;
-}
-
-.container {
-    width: 1198px;
-    margin: 0 auto;
 }
 
 .btn {
@@ -598,36 +594,5 @@ body {
                 }
             }
         }
-
-        .topic {
-            background-color: #fff;
-            padding: 21px;
-
-            .topic-list {
-                dd {
-                    font-weight: 600;
-                    margin-bottom: 21px;
-                }
-
-                dt {
-                    font-size: 13px;
-                    color: #666;
-                    letter-spacing: 1px;
-                    line-height: 140%;
-                    margin-bottom: 21px;
-                    word-break: break-all;
-
-                    &:nth-last-of-type(1) {
-                        margin-bottom: 0;
-                    }
-
-                    a {
-                        color: #999;
-                        white-space: nowrap;
-                    }
-                }
-            }
-        }
     }
 }
-

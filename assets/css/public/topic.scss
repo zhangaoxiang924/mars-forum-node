@@ -1,0 +1,29 @@
+.topic {
+    background-color: #fff;
+    padding: 20px;
+
+    .topic-list {
+        dd {
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        dt {
+            font-size: 13px;
+            color: #666;
+            letter-spacing: 1px;
+            line-height: 140%;
+            margin-bottom: 14px;
+            word-break: break-all;
+
+            &:nth-last-of-type(1) {
+                margin-bottom: 0;
+            }
+
+            a {
+                color: #999;
+                white-space: nowrap;
+            }
+        }
+    }
+}

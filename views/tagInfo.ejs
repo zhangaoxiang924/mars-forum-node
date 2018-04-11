@@ -1,0 +1,112 @@
+<%- include('./public/header', {
+plugin: ['http://static.huoxing24.com/assets/swiper.min.css'],
+private: ['./css/tagInfo.css']
+}) %>
+
+<div class="container">
+    <div class="tagInfo clearfix">
+        <div class="tagInfo-main-l">
+            <div class="tagInfo-header clearfix">
+                <div class="tag-info clearfix">
+                    <div class="tag-img">
+                        <img src="" alt="">
+                    </div>
+
+                    <div class="tag-context">
+                        <p>
+                            <a href="">比特币</a>
+                            <span>2018-04-12创建</span>
+                        </p>
+                        <p>非普遍全球可支付的电子加密货币</p>
+                    </div>
+                </div>
+
+                <div class="tag-stat clearfix">
+                    <div class="tag-stat-con">
+                        <p>
+                            <span>关注</span>
+                            <span>1，000</span>
+                        </p>
+                        <p>
+                            <span>话题</span>
+                            <span>2，345</span>
+                        </p>
+                    </div>
+
+                    <a href="javascript:;" class="attention">关注</a>
+                </div>
+            </div>
+
+            <div class="tag-list">
+                <ul class="tag-list-header clearfix">
+                    <li class="active">最新</li>
+                    <li>最热</li>
+                    <li>精华</li>
+                </ul>
+
+                <div class="tag-list-body">
+                    <div class="list-item">
+                        <a href="" data-id="1">
+                            <div class="title">
+                                首份通俗一点地说，区块链是一个收录所有历史交易的总帐，每个区块中包含若干笔交易记录。如果说区块链是账本，那么区块就是账本的每一页。交易的细节都被记录在一个网络里任何人都可以看得到的公开账簿上。
+                                <span>比特币</span>
+                                <span>比特币</span>
+                                <span>比特币</span>
+                            </div>
+                            <div class="author-info">
+                                <p>
+                                    <img src="./img/jd.png" alt=""> admin
+                                </p>
+                                <p><b>|</b> 1个小时前</p>
+                                <p><b>|</b> 20条评论</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="list-item">
+                        <a href="" data-id="1">
+                            <div class="title">
+                                首份通俗一点地说，区块链是一个收录所有历史交易的总帐，每个区块中包含若干笔交易记录。如果说区块链是账本，那么区块就是账本的每一页。交易的细节都被记录在一个网络里任何人都可以看得到的公开账簿上。
+                                <span>比特币</span>
+                                <span>比特币</span>
+                                <span>比特币</span>
+                            </div>
+                            <div class="author-info">
+                                <p>
+                                    <img src="./img/jd.png" alt=""> admin
+                                </p>
+                                <p><b>|</b> 1个小时前</p>
+                                <p><b>|</b> 20条评论</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="tag-list-footer">
+                    <a href="javascript:;" class="more">点击加载更多</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="tagInfo-main-r">
+            <%- include('./public/topic', {
+            title: '热门',
+            data: [
+            {id:1,url:'',message:'原新东方名师名师，自称‘中国比特币首富’,著名天使投资人原新东方名师，自称‘中国比特币首富’!',ans_num:20},
+            {id:2,url:'',message:'原新东方名师名师，自称‘中国比特币首富’,著名天使投资人原新东方名师，自称‘中国比特币首富’!',ans_num:15},
+            {id:3,url:'',message:'原新东方名师名师，自称‘中国比特币首富’,著名天使投资人原新东方名师，自称‘中国比特币首富’!',ans_num:56},
+            {id:4,url:'',message:'原新东方名师名师，自称‘中国比特币首富’,著名天使投资人原新东方名师，自称‘中国比特币首富’!',ans_num:50},
+            {id:5,url:'',message:'原新东方名，自称‘中国比特币首富’,著名天使投资人原新东方名师，自称‘中国比特币首富’!',ans_num:100}
+            ]
+            }) %>
+
+            <div class="author">
+                预留位置
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('./public/footer', {
+plugin: ['http://static.huoxing24.com/assets/swiper.jquery.min.js'],
+private: ['./js/tagInfo.js']
+}) %>
