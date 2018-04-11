@@ -149,6 +149,34 @@ footer {
         transform: translate(0, -50%);
         display: none;
 
+        .error-msg,
+        .login-error-msg {
+            font-size: 15px;
+            color: #da361a;
+            padding-left: 33px;
+            margin-bottom: 10px;
+            line-height: 40px;
+            width: 0;
+            height: 0;
+            visibility: hidden;
+            opacity: 0;
+            box-sizing: border-box;
+            border: 1px solid #da361a;
+            transition: all 0.1s ease;
+
+            &.show {
+                animation: shake 0.3s;
+                height: 40px;
+                width: 340px;
+                opacity: 1;
+                visibility: visible;
+            }
+
+            &.shake {
+                animation: shake 0.3s;
+            }
+        }
+
         .register,
         .login {
             display: none;
@@ -264,5 +292,27 @@ footer {
                 float: right;
             }
         }
+    }
+}
+
+@keyframes shake {
+    0%,
+    100% {
+        -webkit-transform: translateX(0);
+    }
+
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        -webkit-transform: translateX(-6px);
+    }
+
+    20%,
+    40%,
+    60%,
+    80% {
+        -webkit-transform: translateX(6px);
     }
 }
