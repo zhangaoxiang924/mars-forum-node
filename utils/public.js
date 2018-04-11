@@ -22,8 +22,7 @@ const axios = require('axios')
     })
  */
 const axiosAjax = (arg) => {
-    const {type, url, params, contentType, formData, fn} = arg
-    console.log(params)
+    const {type, url, params, contentType, formData, fn, res} = arg
 
     let opt = null
     const ajaxType = type.toLowerCase()
@@ -66,14 +65,35 @@ const axiosAjax = (arg) => {
         if (fn) {
             fn.call(this, data)
         }
-    }).catch(function (error) {
-        console.log(error)
+    }).catch(function (err) {
+        if (res) {
+            res.render('error', {
+                message: 'Request error',
+                error: {
+                    status: err.response.status,
+                    stack: err.response.data
+                }
+            })
+        }
     })
 }
 
-const ajaxUrl = 'http://www.huoxing24.com'
+const ajaxPhpUrl = 'http://wecenter.huoxing24.vip'
+const ajaxJavaUrl = 'http://www.huoxing24.com'
+const phpPrefix = '/bbs'
+const javaPrefix = '/pc'
+const proxyPhpApi = [
+    phpPrefix,
+    phpPrefix + '/account/ajax/profiles_setting'
+]
+const proxyJavaApi = [
+    javaPrefix + '/info/news/getbyid'
+]
 
 module.exports = {
-    ajaxUrl,
+    ajaxPhpUrl,
+    ajaxJavaUrl,
+    proxyPhpApi,
+    proxyJavaApi,
     axiosAjax
 }
