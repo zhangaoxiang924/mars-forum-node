@@ -11,7 +11,7 @@ router.get('/', function (req, res, next) {
         const data = await new Promise((resolve) => {
             axiosAjax({
                 type: 'GET',
-                url: ajaxPhpUrl + '/234',
+                url: ajaxPhpUrl + '/',
                 params: {},
                 res: res,
                 fn: function (data) {
