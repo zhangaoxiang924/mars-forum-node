@@ -50,8 +50,10 @@
                             </p>
                             <div class="user-box">
                                 <div class="portrait">
-                                    <span class="portrait-img"><img src=<%= imgUrl + postsList[i].user_info.avatar_file %> alt=""></span>
-                                    <span class="portrait-name"><a target="_blank" href="http://bbs.huoxing24.com/?/people/<%= postsList[i].user_info.user_name %>"><%= postsList[i].user_info.user_name %></a></span>
+                                    <a target="_blank" href="http://bbs.huoxing24.com/?/people/<%= postsList[i].user_info.user_name %>">
+                                        <span class="portrait-img"><img src=<%= imgUrl + postsList[i].user_info.avatar_file %> alt=""></span>
+                                        <span class="portrait-name"><%= postsList[i].user_info.user_name %></span>
+                                    </a>
                                     <span class="time"><%= articleTime[i] %></span>
                                     <span class="comment"><font><%= postsList[i].answer_count %></font>评论</span>
                                 </div>
@@ -73,13 +75,13 @@
                         </div>
                     </div> -->
                 </div>
-                <div class="more" id="conterMore" style=<%= total > 10 ? "display: block;": "display: none;"%> data-total=<%= total %>>点击加载更多</div>
+                <div class="more" id="conterMore" style="<%= total > 10 ? 'display: block;': 'display: none;' %>" data-total=<%= total %>>点击加载更多</div>
             </div>
         </div>
         <div class="c-right">
-            <div class="advertising">
+            <!--<div class="advertising">
                 <a><img src="../img/blue.png" alt=""></a>
-            </div>
+            </div>-->
             <div class="master">
                 <div class="master-title">
                     <h5>大咖入驻</h5>

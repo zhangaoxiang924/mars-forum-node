@@ -239,7 +239,7 @@ const deleteCookies = () => {
 }
 
 const utils = {
-    banner: function () {
+    header: function () {
         // 根据是否登陆展示不同按钮
         if (Cookies.get('hx_forum_token') === undefined) {
             $('.login-registration').html(`<p class="login noColorBtn">登录</p><p class="registration colorBtn">注册</p>`)
@@ -391,6 +391,14 @@ const utils = {
             e.stopPropagation()
             $('.login-con .register').show()
             $('.login-con .login').hide()
+        })
+    },
+    footer: function () {
+        const $wxFx = $('#wxFx')
+        $('#wxShare').hover(function () {
+            $wxFx.show()
+        }, function () {
+            $wxFx.hide()
         })
     }
 }

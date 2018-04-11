@@ -4,14 +4,62 @@
  * Description：Description
  */
 
-import {pageLoadingHide, axiosAjax, utils, proxyUrlBbs} from './public/public'
-// import {ajaxUrl} from '../../utils/public'
 import Cookies from 'js-cookie'
 import '../../node_modules/layui-layer/dist/layer.js'
+
+import {pageLoadingHide, axiosAjax, utils, proxyUrlBbs} from './public/public'
+
 $(function () {
     pageLoadingHide()
-    utils.banner()
+    utils.header()
+    utils.footer()
+
     let imgUrl = 'http://bbs.huoxing24.com/uploads/avatar/'
+    let phpUrl = 'http://bbs.huoxing24.com'
+
+    const invitationItem = (data, loadMore) => {
+        let dataArr = data.posts_list
+        let list = ''
+
+        $('#conterMore').attr('data-total', data.total_rows)
+        if (parseInt(data.total_rows) > 10) {
+            $('#conterMore').css('display', 'block')
+        } else {
+            $('#conterMore').css('display', 'none')
+        }
+
+        dataArr.map(function (item, index) {
+            let topicsList = ''
+            item.topics.map(function (item) {
+                topicsList += `<a target="_blank" href="${phpUrl}/?/topic/${item.topic_title}">
+<span>${item.topic_title}</span></a>`
+            })
+
+            list += `<div class="list">
+                        <div class="introduce">
+                            <p><a target="_blank" href="${phpUrl}/?/question/${item.question_content}">${item.question_content}</a>${topicsList}</p>
+                            <div class="user-box">
+                                <div class="portrait">
+                                    <a target="_blank" href="${phpUrl}/?/people/${item.user_info.user_name}">
+                                        <span class="portrait-img"><img src=${imgUrl + item.user_info.avatar_file} alt=""></span>
+                                        <span class="portrait-name">${item.user_info.user_name}</span>
+                                    </a>
+                                    <span class="time">${item.add_time}</span>
+                                    <span class="comment"><font>${item.answer_count}</font>评论</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`
+        })
+
+        const $content = $('.content-center-box .list-box')
+        if (loadMore) {
+            $content.append(list)
+        } else {
+            $content.html(list)
+        }
+    }
+
     // 中间swiper
     let conterSwiper = new Swiper('.swiper-c-top', {
         pagination: '.swiper-pagination',
@@ -73,30 +121,7 @@ $(function () {
         columnDataType = dataType
         if (index < 3) {
             indexLeftTopData(key, dataType, pageNum).then((data) => {
-                let dataArr = data.posts_list
-                let list = ''
-                $('#conterMore').attr('data-total', data.total_rows)
-                console.log(data)
-                dataArr.map(function (item, index) {
-                    let topicsList = ''
-                    item.topics.map(function (item, index) {
-                        topicsList += `<span>${item.topic_title}</span>`
-                    })
-                    list += `<div class="list">
-                        <div class="introduce">
-                            <p><a href="">${item.question_content}</a>${topicsList}</p>
-                            <div class="user-box">
-                                <div class="portrait">
-                                    <span class="portrait-img"><img src=${imgUrl + item.user_info.avatar_file} alt=""></span>
-                                    <span class="portrait-name">${item.user_info.user_name}</span>
-                                    <span class="time">${item.add_time}</span>
-                                    <span class="comment"><font>${item.answer_count}</font>评论</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>`
-                })
-                $('.content-center-box .list-box').html(list)
+                invitationItem(data)
             })
         } else {
             let dataState = parseInt($(this).data('type'))
@@ -167,30 +192,7 @@ $(function () {
         cDataId = dataId
         bColumnId = dataId
         indexLeftCommunityData(dataId, 'new', index, 'sort_type', 1).then((data) => {
-            let dataArr = data.posts_list
-            let list = ''
-            console.log(data)
-            $('#conterMore').attr('data-total', data.total_rows)
-            dataArr.map(function (item, index) {
-                let topicsList = ''
-                item.topics.map(function (item, index) {
-                    topicsList += `<span>${item.topic_title}</span>`
-                })
-                list += `<div class="list">
-                        <div class="introduce">
-                            <p><a href="">${item.question_content}</a>${topicsList}</p>
-                            <div class="user-box">
-                                <div class="portrait">
-                                    <span class="portrait-img"><img src=${imgUrl + item.user_info.avatar_file} alt=""></span>
-                                    <span class="portrait-name">${item.user_info.user_name}</span>
-                                    <span class="time">${item.add_time}</span>
-                                    <span class="comment"><font>${item.answer_count}</font>评论</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>`
-            })
-            $('.content-center-box .list-box').html(list)
+            invitationItem(data)
         })
     })
 
@@ -210,36 +212,7 @@ $(function () {
             key = 'sort_type'
         }
         indexLeftCommunityData(cDataId, dataType, index, key, 1).then((data) => {
-            let dataArr = data.posts_list
-            let list = ''
-            console.log(data)
-            dataArr.map(function (item, index) {
-                $('#conterMore').attr('data-total', data.total_rows)
-                console.log(data.total_rows)
-                if (parseInt(data.total_rows) > 10) {
-                    $('#conterMore').css('display', 'show')
-                } else {
-                    $('#conterMore').css('display', 'none')
-                }
-                let topicsList = ''
-                item.topics.map(function (item, index) {
-                    topicsList += `<span>${item.topic_title}</span>`
-                })
-                list += `<div class="list">
-                    <div class="introduce">
-                        <p><a href="">${item.question_content}</a>${topicsList}</p>
-                        <div class="user-box">
-                            <div class="portrait">
-                                <span class="portrait-img"><img src=${imgUrl + item.user_info.avatar_file} alt=""></span>
-                                <span class="portrait-name">${item.user_info.user_name}</span>
-                                <span class="time">${item.add_time}</span>
-                                <span class="comment"><font>${item.answer_count}</font>评论</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>`
-            })
-            $('.content-center-box .list-box').html(list)
+            invitationItem(data)
         })
     })
 
@@ -260,54 +233,11 @@ $(function () {
                     bKey = 'sort_type'
                 }
                 indexLeftCommunityData(bColumnId, bDataType, '', bKey, pageNum).then((data) => {
-                    let dataArr = data.posts_list
-                    let list = ''
-                    dataArr.map(function (item, index) {
-                        let topicsList = ''
-                        item.topics.map(function (item, index) {
-                            topicsList += `<span>${item.topic_title}</span>`
-                        })
-                        list += `<div class="list">
-                    <div class="introduce">
-                        <p><a href="">${item.question_content}</a>${topicsList}</p>
-                        <div class="user-box">
-                            <div class="portrait">
-                                <span class="portrait-img"><img src=${imgUrl + item.user_info.avatar_file} alt=""></span>
-                                <span class="portrait-name">${item.user_info.user_name}</span>
-                                <span class="time">${item.add_time}</span>
-                                <span class="comment"><font>${item.answer_count}</font>评论</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>`
-                    })
-                    $('.content-center-box .list-box').append(list)
+                    invitationItem(data, 'loadMore')
                 })
             } else {
                 indexLeftTopData(columnKey, columnDataType, pageNum).then((data) => {
-                    let dataArr = data.posts_list
-                    let list = ''
-                    console.log(data)
-                    dataArr.map(function (item, index) {
-                        let topicsList = ''
-                        item.topics.map(function (item, index) {
-                            topicsList += `<span>${item.topic_title}</span>`
-                        })
-                        list += `<div class="list">
-                        <div class="introduce">
-                            <p><a href="">${item.question_content}</a>${topicsList}</p>
-                            <div class="user-box">
-                                <div class="portrait">
-                                    <span class="portrait-img"><img src=${imgUrl + item.user_info.avatar_file} alt=""></span>
-                                    <span class="portrait-name">${item.user_info.user_name}</span>
-                                    <span class="time">${item.add_time}</span>
-                                    <span class="comment"><font>${item.answer_count}</font>评论</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>`
-                    })
-                    $('.content-center-box .list-box').append(list)
+                    invitationItem(data, 'loadMore')
                 })
             }
         }
