@@ -10,6 +10,7 @@ var proxyRouter = require('./routes/proxy')
 var invitationRouter = require('./routes/invitation')
 var tagListRouter = require('./routes/tagList')
 var tagInfoRouter = require('./routes/tagInfo')
+var searchResultRouter = require('./routes/searchResult')
 
 var app = express()
 app.use('/api', proxyRouter)
@@ -29,6 +30,7 @@ app.use('/users', usersRouter)
 app.use('/invitation', invitationRouter)
 app.use('/taglist', tagListRouter)
 app.use('/taginfo', tagInfoRouter)
+app.use('/searchresult', searchResultRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
