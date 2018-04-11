@@ -97,7 +97,10 @@ const ajaxPhpUrl = 'http://wecenter.huoxing24.vip'
 const phpPrefix = '/bbs'
 const proxyPhpApi = [
     phpPrefix,
-    phpPrefix + '/account/ajax/profiles_setting'
+    phpPrefix + '/?/',
+    phpPrefix + '/account/ajax/profiles_setting',
+    phpPrefix + '/?/home/ajax/index_actions',
+    phpPrefix + '/?/publish/ajax/fetch_question_category/1',
 ]
 
 module.exports = {
