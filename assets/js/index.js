@@ -4,13 +4,13 @@
  * Description：Description
  */
 
-import {pageLoadingHide, utils, proxyUrlBbs} from './public/public'
-import {axiosAjax} from '../../utils/public'
+import {pageLoadingHide, axiosAjax, utils, proxyUrlBbs} from './public/public'
+// import {ajaxUrl} from '../../utils/public'
 import '../../node_modules/layui-layer/dist/layer.js'
 $(function () {
     pageLoadingHide()
     utils.banner()
-    let imgUrl = 'http://wecenter.huoxing24.vip//uploads/avatar/'
+    let imgUrl = ''
     // 中间swiper
 
     let conterSwiper = new Swiper('.swiper-c-top', {
@@ -41,6 +41,7 @@ $(function () {
         })
         return data
     }
+
     // 关注
     async function indexLeftAttentionData (page) {
         const data = await new Promise((resolve, reject) => {
@@ -55,6 +56,7 @@ $(function () {
         })
         return data
     }
+
     $('#leftTop li').on('click', function () {
         $('.list-tab').removeClass('show')
         $(this).addClass('active').siblings('li').removeClass('active')
@@ -105,7 +107,7 @@ $(function () {
         const data = await new Promise((resolve, reject) => {
             axiosAjax({
                 type: 'get',
-                url: proxyUrlBbs + '?/publish/ajax/fetch_question_category/1',
+                url: `${proxyUrlBbs}/?/publish/ajax/fetch_question_category/1`,
                 params: {},
                 fn: function (data) {
                     resolve(data)

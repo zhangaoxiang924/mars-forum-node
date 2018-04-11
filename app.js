@@ -3,6 +3,7 @@ const express = require('express')
 const path = require('path')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
+const fileStreamRotator = require('file-stream-rotator')
 const fs = require('fs')
 
 const indexRouter = require('./routes/index')
@@ -17,8 +18,18 @@ app.use('/api', proxyRouter)
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
-const accessLogStream = fs.createWriteStream(path.join(__dirname, 'logs.log'), {flags: 'a'})
-app.use(logger('combined', {stream: accessLogStream}))
+// logger
+const logDir = '/data/node_website/mars-logs'
+fs.existsSync(logDir) || fs.mkdirSync(logDir)
+const accessLogStream = fileStreamRotator.getStream({
+    date_format: 'YYYYMMDD',
+    filename: path.join(logDir, 'logs-%DATE%.log'),
+    frequency: 'daily',
+    verbose: true
+})
+app.use(logger('dev'))
+app.use(logger('common', {stream: accessLogStream}))
+
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 app.use(cookieParser())
