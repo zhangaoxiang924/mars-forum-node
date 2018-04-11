@@ -212,8 +212,15 @@ $(function () {
         indexLeftCommunityData(cDataId, dataType, index, key, 1).then((data) => {
             let dataArr = data.posts_list
             let list = ''
+            console.log(data)
             dataArr.map(function (item, index) {
                 $('#conterMore').attr('data-total', data.total_rows)
+                console.log(data.total_rows)
+                if (parseInt(data.total_rows) > 10) {
+                    $('#conterMore').css('display', 'show')
+                } else {
+                    $('#conterMore').css('display', 'none')
+                }
                 let topicsList = ''
                 item.topics.map(function (item, index) {
                     topicsList += `<span>${item.topic_title}</span>`
