@@ -38,7 +38,7 @@ $(function () {
 
             list += `<div class="list">
                         <div class="introduce">
-                            <p><a target="_blank" href="${phpUrl}/?/question/${item.question_content}">${item.question_content}</a>${topicsList}</p>
+                            <p><a target="_blank" href="${phpUrl}/?/question/${item.question_id}">${item.question_content}</a>${topicsList}</p>
                             <div class="user-box">
                                 <div class="portrait">
                                     <a target="_blank" href="${phpUrl}/?/people/${item.user_info.user_name}">
