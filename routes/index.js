@@ -24,6 +24,7 @@ router.get('/', function (req, res, next) {
     }
 
     indexData().then((data) => {
+        console.log(data)
         res.render('index', {...data})
     })
 })

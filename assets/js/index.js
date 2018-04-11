@@ -6,13 +6,13 @@
 
 import {pageLoadingHide, axiosAjax, utils, proxyUrlBbs} from './public/public'
 // import {ajaxUrl} from '../../utils/public'
+import Cookies from 'js-cookie'
 import '../../node_modules/layui-layer/dist/layer.js'
 $(function () {
     pageLoadingHide()
     utils.banner()
-    let imgUrl = ''
+    let imgUrl = 'http://bbs.huoxing24.com/uploads/avatar/'
     // 中间swiper
-
     let conterSwiper = new Swiper('.swiper-c-top', {
         pagination: '.swiper-pagination',
         paginationClickable: true,
@@ -23,17 +23,12 @@ $(function () {
     conterSwiper.autoplay = true
 
     // 中间左侧/ top
-    let topColumn = [
-        {is_recommend: 1, page: 1},
-        {sort_type: 'hot', page: 1},
-        {sort_type: 'new', page: 1}
-    ]
-    async function indexLeftTopData (index, page) {
+    async function indexLeftTopData (key, type, page) {
         const data = await new Promise((resolve, reject) => {
             axiosAjax({
                 type: 'GET',
-                url: proxyUrlBbs,
-                params: topColumn[index],
+                url: `${proxyUrlBbs}?${key}=${type}&page=${page}`,
+                // params: {sort_type: 'hot', page: page},
                 fn: function (data) {
                     resolve(data)
                 }
@@ -47,7 +42,7 @@ $(function () {
         const data = await new Promise((resolve, reject) => {
             axiosAjax({
                 type: 'GET',
-                url: `${proxyUrlBbs}/?/home/ajax/index_actions?page=${page}&filter=focus`,
+                url: `${proxyUrlBbs}/home/#all__focus`,
                 params: {},
                 fn: function (data) {
                     resolve(data)
@@ -57,16 +52,30 @@ $(function () {
         return data
     }
 
+    let pageNum = 1
+    let columnKey = ''
+    let columnDataType = ''
     $('#leftTop li').on('click', function () {
+        $('#conterMore').attr('data-pages', false)
         $('.list-tab').removeClass('show')
         $(this).addClass('active').siblings('li').removeClass('active')
         $('#leftBottom li').removeClass('active')
         let index = $(this).index()
+        let dataType = $(this).data('type')
+        let key = ''
+        if (index === 0) {
+            key = 'is_recommend'
+        } else {
+            key = 'sort_type'
+        }
+        columnKey = key
+        pageNum = 1
+        columnDataType = dataType
         if (index < 3) {
-            let page = topColumn[index].page
-            indexLeftTopData(index, page).then((data) => {
+            indexLeftTopData(key, dataType, pageNum).then((data) => {
                 let dataArr = data.posts_list
                 let list = ''
+                $('#conterMore').attr('data-total', data.total_rows)
                 console.log(data)
                 dataArr.map(function (item, index) {
                     let topicsList = ''
@@ -92,7 +101,9 @@ $(function () {
         } else {
             let dataState = parseInt($(this).data('type'))
             console.log(dataState)
-            if (dataState === -1) {
+            if (Cookies.get('hx_forum_loginState') === undefined) {
+                $('.shade').show()
+                $('.login-con, .login-con .login').show()
                 return false
             } else {
                 indexLeftAttentionData(1).then((data) => {
@@ -116,6 +127,7 @@ $(function () {
         })
         return data
     }
+
     indexClassifyData().then((data) => {
         let list = ''
         data.map(function (item, index) {
@@ -124,12 +136,12 @@ $(function () {
         $('#leftBottom').html(list)
     })
 
-    async function indexLeftCommunityData (id, type, index) {
-        let classifyData = ['sort_type', 'sort_type', 'is_recommend']
+    async function indexLeftCommunityData (id, type, index, key, page) {
         const data = await new Promise((resolve, reject) => {
             axiosAjax({
                 type: 'GET',
-                url: `${proxyUrlBbs}/?category=${id}&${classifyData[index]}=${type}`,
+                url: `${proxyUrlBbs}/?category=${id}&${key}=${type}&page=${page}`,
+                // params: classifyData[index],
                 fn: function (data) {
                     resolve(data)
                 }
@@ -137,8 +149,14 @@ $(function () {
         })
         return data
     }
+
     let cDataId = null
+    let bColumnId = null
+    let bDataType = 'new'
+    let bIndex = null
+    let bKey = ''
     $('ul#leftBottom').on('click', 'li', function () {
+        $('#conterMore').attr('data-pages', true)
         $('.list-tab').addClass('show')
         $(this).addClass('active').siblings('li').removeClass('active')
         $('#listTab p').eq(0).addClass('active').children('span').addClass('active').parent()
@@ -147,9 +165,12 @@ $(function () {
         let dataId = $(this).data('id')
         let index = $(this).index()
         cDataId = dataId
-        indexLeftCommunityData(dataId, 'new', index).then((data) => {
+        bColumnId = dataId
+        indexLeftCommunityData(dataId, 'new', index, 'sort_type', 1).then((data) => {
             let dataArr = data.posts_list
             let list = ''
+            console.log(data)
+            $('#conterMore').attr('data-total', data.total_rows)
             dataArr.map(function (item, index) {
                 let topicsList = ''
                 item.topics.map(function (item, index) {
@@ -175,15 +196,24 @@ $(function () {
 
     // 中间切换
     $('#listTab p').on('click', function () {
+        pageNum = 1
         $(this).addClass('active').children('span').addClass('active').parent()
             .siblings('p').removeClass('active').children('span').removeClass('active')
         let dataType = $(this).data('type')
+        bDataType = dataType
         let index = $(this).index()
-        console.log(index)
-        indexLeftCommunityData(cDataId, dataType, index).then((data) => {
+        bIndex = index
+        let key = ''
+        if (index === 2) {
+            key = 'is_recommend'
+        } else {
+            key = 'sort_type'
+        }
+        indexLeftCommunityData(cDataId, dataType, index, key, 1).then((data) => {
             let dataArr = data.posts_list
             let list = ''
             dataArr.map(function (item, index) {
+                $('#conterMore').attr('data-total', data.total_rows)
                 let topicsList = ''
                 item.topics.map(function (item, index) {
                     topicsList += `<span>${item.topic_title}</span>`
@@ -204,5 +234,75 @@ $(function () {
             })
             $('.content-center-box .list-box').html(list)
         })
+    })
+
+    // 加载更多
+    $('#conterMore').on('click', function () {
+        pageNum++
+        let total = $(this).data('total')
+        let pagination = Math.ceil(total / 10)
+        if (pageNum > pagination) {
+            layer.msg('没有更多')
+            return false
+        } else {
+            let pageState = $(this).data('pages')
+            if (pageState) {
+                if (bIndex === 2) {
+                    bKey = 'is_recommend'
+                } else {
+                    bKey = 'sort_type'
+                }
+                indexLeftCommunityData(bColumnId, bDataType, '', bKey, pageNum).then((data) => {
+                    let dataArr = data.posts_list
+                    let list = ''
+                    dataArr.map(function (item, index) {
+                        let topicsList = ''
+                        item.topics.map(function (item, index) {
+                            topicsList += `<span>${item.topic_title}</span>`
+                        })
+                        list += `<div class="list">
+                    <div class="introduce">
+                        <p><a href="">${item.question_content}</a>${topicsList}</p>
+                        <div class="user-box">
+                            <div class="portrait">
+                                <span class="portrait-img"><img src=${imgUrl + item.user_info.avatar_file} alt=""></span>
+                                <span class="portrait-name">${item.user_info.user_name}</span>
+                                <span class="time">${item.add_time}</span>
+                                <span class="comment"><font>${item.answer_count}</font>评论</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>`
+                    })
+                    $('.content-center-box .list-box').append(list)
+                })
+            } else {
+                indexLeftTopData(columnKey, columnDataType, pageNum).then((data) => {
+                    let dataArr = data.posts_list
+                    let list = ''
+                    console.log(data)
+                    dataArr.map(function (item, index) {
+                        let topicsList = ''
+                        item.topics.map(function (item, index) {
+                            topicsList += `<span>${item.topic_title}</span>`
+                        })
+                        list += `<div class="list">
+                        <div class="introduce">
+                            <p><a href="">${item.question_content}</a>${topicsList}</p>
+                            <div class="user-box">
+                                <div class="portrait">
+                                    <span class="portrait-img"><img src=${imgUrl + item.user_info.avatar_file} alt=""></span>
+                                    <span class="portrait-name">${item.user_info.user_name}</span>
+                                    <span class="time">${item.add_time}</span>
+                                    <span class="comment"><font>${item.answer_count}</font>评论</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`
+                    })
+                    $('.content-center-box .list-box').append(list)
+                })
+            }
+        }
     })
 })
