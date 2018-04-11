@@ -165,7 +165,8 @@ const axiosAjax = (arg) => {
     })
 }
 
-const proxyUrl = '/api'
+const proxyUrlBbs = '/api/bbs'
+const proxyUrlPc = '/api/pc'
 
 export {
     isPc,
@@ -177,5 +178,6 @@ export {
     getQueryString,
     pageLoadingHide,
     axiosAjax,
-    proxyUrl
+    proxyUrlBbs,
+    proxyUrlPc
 }

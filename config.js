@@ -3,6 +3,7 @@ module.exports = {
     port: '8060',
     publicPath: '../',
     vendors: [
+        'babel-polyfill',
         'axios',
         'layui-layer'
     ]

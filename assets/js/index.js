@@ -4,11 +4,13 @@
  * Description：Description
  */
 
-import {pageLoadingHide} from './public/public'
+import {pageLoadingHide, utils} from './public/public'
 import '../../node_modules/layui-layer/dist/layer.js'
 
 $(function () {
     pageLoadingHide()
+
+    utils.banner()
     // 中间swiper
     let conterSwiper = new Swiper('.swiper-c-top', {
         pagination: '.swiper-pagination',
