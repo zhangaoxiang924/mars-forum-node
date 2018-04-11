@@ -5,7 +5,6 @@
  */
 
 import axios from 'axios'
-import '../../../node_modules/layui-layer/dist/layer.js'
 
 const isPc = () => {
     const userAgent = window.navigator.userAgent.toLowerCase()
@@ -137,9 +136,9 @@ const axiosAjax = (arg) => {
 
     if (formData) {
         let formDataParm = new URLSearchParams()
-        $.each(params, function (key, value) {
-            formDataParm.append(key, value)
-        })
+        for (let key in params) {
+            formDataParm.append(key, params[key])
+        }
 
         opt = {
             method: type,
@@ -157,13 +156,12 @@ const axiosAjax = (arg) => {
     axios(opt).then(function (response) {
         const data = response.data
         $('#ajaxLoading').remove()
-        layer.msg(data)
 
         if (fn) {
             fn.call(this, data)
         }
     }).catch(function (error) {
-        layer.msg(error)
+        console.log(error)
     })
 }
 

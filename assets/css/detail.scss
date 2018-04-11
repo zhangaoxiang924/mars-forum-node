@@ -7,7 +7,8 @@
 @import "./public/public";
 @import "./public/header";
 @import "./public/footer";
+@import "./index/banner";
 
 body {
-    background: #fff;
+    background: url("../img/blue-color-red.png");
 }
