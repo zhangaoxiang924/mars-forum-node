@@ -165,7 +165,7 @@ const axiosAjax = (arg) => {
     })
 }
 
-const proxyUrlBbs = '/api'
+const proxyUrlBbs = '/api/bbs'
 const proxyUrlPc = '/api/pc'
 
 export {
