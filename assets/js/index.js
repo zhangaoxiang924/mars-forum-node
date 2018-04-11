@@ -4,8 +4,8 @@
  * Description：Description
  */
 
-import {pageLoadingHide, axiosAjax, utils} from './public/public'
-// import {ajaxUrl} from '../../utils/public'
+import {pageLoadingHide, utils, proxyUrlBbs} from './public/public'
+import {axiosAjax} from '../../utils/public'
 import '../../node_modules/layui-layer/dist/layer.js'
 $(function () {
     pageLoadingHide()
@@ -32,7 +32,7 @@ $(function () {
         const data = await new Promise((resolve, reject) => {
             axiosAjax({
                 type: 'GET',
-                url: '/api',
+                url: proxyUrlBbs,
                 params: topColumn[index],
                 fn: function (data) {
                     resolve(data)
@@ -46,7 +46,7 @@ $(function () {
         const data = await new Promise((resolve, reject) => {
             axiosAjax({
                 type: 'GET',
-                url: `/api/?/home/ajax/index_actions?page=${page}&filter=focus`,
+                url: `${proxyUrlBbs}/?/home/ajax/index_actions?page=${page}&filter=focus`,
                 params: {},
                 fn: function (data) {
                     resolve(data)
@@ -105,7 +105,7 @@ $(function () {
         const data = await new Promise((resolve, reject) => {
             axiosAjax({
                 type: 'get',
-                url: '/api/?/publish/ajax/fetch_question_category/1',
+                url: proxyUrlBbs + '?/publish/ajax/fetch_question_category/1',
                 params: {},
                 fn: function (data) {
                     resolve(data)
@@ -127,7 +127,7 @@ $(function () {
         const data = await new Promise((resolve, reject) => {
             axiosAjax({
                 type: 'GET',
-                url: `/api/?category=${id}&${classifyData[index]}=${type}`,
+                url: `${proxyUrlBbs}/?category=${id}&${classifyData[index]}=${type}`,
                 fn: function (data) {
                     resolve(data)
                 }
