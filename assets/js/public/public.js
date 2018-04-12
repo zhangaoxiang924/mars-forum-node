@@ -399,10 +399,9 @@ const utils = {
     },
     banner: function () {
         // banner关闭与展开
-        const $bannerClose = $('#bannerClose')
-        const $forumBanner = $('#forumBanner')
-        $bannerClose.click(function () {
-            $forumBanner.toggleClass('banner-show')
+        $('#bannerClose').click(function () {
+            $('#forumBanner').toggleClass('active')
+            $('header').toggleClass('active')
         })
     },
     footer: function () {

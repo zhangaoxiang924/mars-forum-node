@@ -52,10 +52,22 @@
             <a target="_blank" href="/" class="forum">社群</a>
             <a target="_blank" href="http://www.huoxing24.com/app">火星APP</a>
         </div>
-        <!--<div class="header-search">
-            <input type="text" placeholder="帖子/用户">
+        <div class="header-search" style="display: none">
+            <input type="text" placeholder="帖子/用户" autocomplete="off" name="q" id="aw-search-query">
             <p class="search-btn"><img src="./img/search.png" alt=""></p>
-        </div>-->
+
+            <!--wecenter拷贝-->
+            <div class="aw-dropdown" style="display: none;">
+                <div class="mod-body">
+                    <p class="title">输入关键字进行搜索</p>
+                    <ul class="aw-dropdown-list collapse"></ul>
+                    <p class="search"><span>搜索:</span><a onclick="$('#global_search_form').submit();"></a></p>
+                </div>
+                <div class="mod-footer">
+                    <a href="http://bbs.huoxing24.com/?/publish" onclick="$('#header_publish').click();" class="pull-right btn btn-mini btn-success publish">发起问题</a>
+                </div>
+            </div>
+        </div>
         <div class="login-registration">
             <p class="login noColorBtn">登录</p>
             <p class="registration colorBtn">注册</p>
