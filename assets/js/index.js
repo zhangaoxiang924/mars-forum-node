@@ -17,10 +17,6 @@ $(function () {
 
     let imgUrl = 'http://bbs.huoxing24.com/uploads/avatar/'
     let phpUrl = 'http://bbs.huoxing24.com'
-    
-    $('.banner-close').on('click', function () {
-        $('.forum-banner').slideUp()
-    })
 
     const invitationItem = (data, loadMore) => {
         let dataArr = data.posts_list
@@ -69,7 +65,7 @@ $(function () {
     let conterSwiper = new Swiper('.swiper-c-top', {
         pagination: '.swiper-pagination',
         paginationClickable: true,
-        autoplay: 5000,
+        autoplay: 3000,
         autoplayDisableOnInteraction: false,
         preventClicks: false
     })
