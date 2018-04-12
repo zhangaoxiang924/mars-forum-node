@@ -7,22 +7,17 @@
 import Cookies from 'js-cookie'
 import '../../node_modules/layui-layer/dist/layer.js'
 
-import {pageLoadingHide, axiosAjax, utils, proxyUrlBbs, formatTime} from './public/public'
+import {pageLoadingHide, axiosAjax, proxyUrlBbs, formatTime, publicFunc} from './public/public'
 
 $(function () {
     pageLoadingHide()
-    utils.header()
-    utils.banner()
-    utils.footer()
-    utils.forumShow()
-
+    publicFunc()
     let imgUrl = 'http://bbs.huoxing24.com/uploads/avatar/'
     let phpUrl = 'http://bbs.huoxing24.com'
 
     const invitationItem = (data, loadMore) => {
         let dataArr = data.posts_list
         let list = ''
-        console.log(data)
         $('#conterMore').attr('data-total', data.total_rows)
         if (parseInt(data.total_rows) > 20) {
             $('#conterMore').css('display', 'block')

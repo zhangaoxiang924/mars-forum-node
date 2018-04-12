@@ -238,6 +238,9 @@ const deleteCookies = () => {
     }
 }
 
+/**
+ * Intro: 公共方法
+ */
 const utils = {
     header: function () {
         // 根据是否登陆展示不同按钮
@@ -308,13 +311,13 @@ const utils = {
                         Cookies.set('hx_forum_loginState', 0)
                         layer.msg('登陆成功！')
                         $('#iframe').attr('src', data.obj.bbsLogin)
-                        if (forumSkip && forum === 'login') {
-                            window.location.href = urlSkip
-                        } else {
-                            setTimeout(function () {
+                        setTimeout(function () {
+                            if (forumSkip && forum === 'login') {
+                                window.location.href = urlSkip
+                            } else {
                                 window.location.reload()
-                            }, 500)
-                        }
+                            }
+                        }, 500)
                     }
                 }
             })
@@ -343,13 +346,13 @@ const utils = {
                         layer.msg('已注销！')
                         $('#iframe').attr('src', data.obj)
 
-                        if (urlSkip) {
-                            window.location.href = urlSkip
-                        } else {
-                            setTimeout(function () {
+                        setTimeout(function () {
+                            if (urlSkip) {
+                                window.location.href = urlSkip
+                            } else {
                                 window.location.reload()
-                            }, 500)
-                        }
+                            }
+                        }, 500)
                     }
                 }
             })
@@ -488,7 +491,20 @@ const utils = {
             deleteCookies()
             layer.msg('已注销！')
         }
+    },
+    goMob: function () {
+        if (!isPc()) {
+            window.location.href = 'http://bbs.huoxing24.com/m'
+        }
     }
+}
+
+const publicFunc = () => {
+    utils.header()
+    utils.banner()
+    utils.footer()
+    utils.forumShow()
+    utils.goMob()
 }
 
 export {
@@ -504,6 +520,7 @@ export {
     deleteCookies,
     isPoneAvailable,
     utils,
+    publicFunc,
     proxyUrlBbs,
     proxyUrlPc,
     getTime,
