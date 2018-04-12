@@ -12,51 +12,6 @@ a {
     color: #222;
 }
 
-.simple-pagination {
-    text-align: center;
-    padding: 14px 0;
-
-    li {
-        display: inline-block;
-        width: 40px;
-        text-align: center;
-        line-height: 40px;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-
-        &.active {
-            background-color: #ffd100;
-            border-radius: 4px;
-        }
-
-        &:first-of-type {
-            margin-right: 15px;
-            color: #757575;
-        }
-
-        &:nth-last-of-type(1) {
-            margin-left: 15px;
-            color: #757575;
-        }
-
-        &:hover a,
-        &:hover .ellipse {
-            color: #ffd100;
-        }
-
-        a {
-            color: #222;
-        }
-    }
-
-    span {
-        font-size: 14px;
-        white-space: nowrap;
-    }
-}
-
 .tag {
     margin-top: 80px;
 }
@@ -144,7 +99,11 @@ a {
 
                     &:nth-of-type(2) {
                         color: #888;
-                        line-height: 140%;
+                        line-height: 20px;
+                        height: 20px;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
                     }
 
                     &:nth-of-type(3) {
@@ -162,7 +121,8 @@ a {
             .tag-att {
                 margin-top: 13px;
 
-                .attention {
+                .attention,
+                .cancle-attention {
                     display: block;
                     width: 96px;
                     text-align: center;
@@ -171,7 +131,32 @@ a {
                     background-color: #ffd100;
                     border-radius: 4px;
                     margin-left: 12px;
+
+                    &:hover {
+                        background-color: #fedd48;
+                    }
                 }
+            }
+        }
+    }
+
+    .tab-footer {
+        padding: 20px;
+        text-align: center;
+
+        .more-tag {
+            display: inline-block;
+            width: 134px;
+            text-align: center;
+            line-height: 34px;
+            font-size: 14px;
+            border: 1px solid #ffd100;
+            background-color: #ffd100;
+            border-radius: 4px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #fedd48;
             }
         }
     }

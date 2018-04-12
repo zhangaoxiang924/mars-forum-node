@@ -7,140 +7,52 @@ private: ['./css/tagList.css']
     <div class="tag clearfix">
         <div class="tag-main-l">
             <div class="tag-header clearfix">
-                <h3>热门TAG</h3>
+                <h3>热门标签</h3>
                 <div class="tab-list">
-                    <a href="#/all" class="active">全部</a>
-                    <a href="#/seven">7日</a>
-                    <a href="#/thirty">30日</a>
+                    <a href="javascript:;" data-time="" class="active">全部</a>
+                    <a href="javascript:;" data-time="week">7日</a>
+                    <a href="javascript:;" data-time="mount">30日</a>
                 </div>
             </div>
 
             <div class="tag-body clearfix">
+                <% for (let i = 0; i < topics_list.length; i++) {
+                    let item = topics_list[i] %>
+
                 <div class="tag-item clearfix">
                     <div class="tag-img">
-                        <img src="" alt="">
+                        <img src='<%= item.topic_pic %>' alt="">
                     </div>
 
                     <div class="tag-context">
-                        <p><a href="">比特币</a></p>
-                        <p>非普遍全球可支付的电子加密货币</p>
+                        <p><a href="/taginfo?id=<%= item.topic_id %>"><%= item.topic_title %></a></p>
+                        <p><%= item.topic_description %> </p>
                         <p>
-                            <span>113人关注</span>
-                            <span>132个话题</span>
+                            <span><%= item.focus_count %>人关注</span>
+                            <span><%= item.discuss_count %>个话题</span>
                         </p>
                     </div>
 
                     <div class="tag-att">
-                        <a href="javascript:;" class="attention">关注</a>
+                        <% if(item.has_focus){ %>
+                        <a href="javascript:;" data-topicID="<%= item.topic_id %>" class="cancle-attention">已关注</a>
+                        <% }else { %>
+                        <a href="javascript:;" data-topicID="<%= item.topic_id %>" class="attention">关注</a>
+                        <% } %>
                     </div>
                 </div>
-                <div class="tag-item clearfix">
-                    <div class="tag-img">
-                        <img src="" alt="">
-                    </div>
-
-                    <div class="tag-context">
-                        <p><a href="">比特币</a></p>
-                        <p>非普遍全球可支付的电子加密货币</p>
-                        <p>
-                            <span>113人关注</span>
-                            <span>132个话题</span>
-                        </p>
-                    </div>
-
-                    <div class="tag-att">
-                        <a href="javascript:;" class="attention">关注</a>
-                    </div>
-                </div>
-                <div class="tag-item clearfix">
-                    <div class="tag-img">
-                        <img src="" alt="">
-                    </div>
-
-                    <div class="tag-context">
-                        <p><a href="">比特币</a></p>
-                        <p>非普遍全球可支付的电子加密货币</p>
-                        <p>
-                            <span>113人关注</span>
-                            <span>132个话题</span>
-                        </p>
-                    </div>
-
-                    <div class="tag-att">
-                        <a href="javascript:;" class="attention">关注</a>
-                    </div>
-                </div>
-                <div class="tag-item clearfix">
-                    <div class="tag-img">
-                        <img src="" alt="">
-                    </div>
-
-                    <div class="tag-context">
-                        <p><a href="">比特币</a></p>
-                        <p>非普遍全球可支付的电子加密货币</p>
-                        <p>
-                            <span>113人关注</span>
-                            <span>132个话题</span>
-                        </p>
-                    </div>
-
-                    <div class="tag-att">
-                        <a href="javascript:;" class="attention">关注</a>
-                    </div>
-                </div>
-                <div class="tag-item clearfix">
-                    <div class="tag-img">
-                        <img src="" alt="">
-                    </div>
-
-                    <div class="tag-context">
-                        <p><a href="">比特币</a></p>
-                        <p>非普遍全球可支付的电子加密货币</p>
-                        <p>
-                            <span>113人关注</span>
-                            <span>132个话题</span>
-                        </p>
-                    </div>
-
-                    <div class="tag-att">
-                        <a href="javascript:;" class="attention">关注</a>
-                    </div>
-                </div>
-                <div class="tag-item clearfix">
-                    <div class="tag-img">
-                        <img src="" alt="">
-                    </div>
-
-                    <div class="tag-context">
-                        <p><a href="">比特币</a></p>
-                        <p>非普遍全球可支付的电子加密货币</p>
-                        <p>
-                            <span>113人关注</span>
-                            <span>132个话题</span>
-                        </p>
-                    </div>
-
-                    <div class="tag-att">
-                        <a href="javascript:;" class="attention">关注</a>
-                    </div>
-                </div>
+                <% } %>
             </div>
 
             <div class="tab-footer">
-                <ul id="pagination" class="pagination-sm"></ul>
+                <a href="javascript:;" class="more-tag">点击加载更多</a>
             </div>
         </div>
 
         <div class="tag-main-r">
             <%- include('./public/topic', {
             title: '热门',
-            data: [
-            {id:1,message:'原新东方名师名师，自称‘中国比特币首富’,著名天使投资人原新东方名师，自称‘中国比特币首富’!',ans_num:20},
-            {id:2,message:'原新东方名师名师，自称‘中国比特币首富’,著名天使投资人原新东方名师，自称‘中国比特币首富’!',ans_num:15},
-            {id:3,message:'原新东方名师名师，自称‘中国比特币首富’,著名天使投资人原新东方名师，自称‘中国比特币首富’!',ans_num:56},
-            {id:4,message:'原新东方名师名师，自称‘中国比特币首富’,著名天使投资人原新东方名师，自称‘中国比特币首富’!',ans_num:50},
-            {id:5,message:'原新东方名，自称‘中国比特币首富’,著名天使投资人原新东方名师，自称‘中国比特币首富’!',ans_num:100}
-            ]
+            data: posts_list
             }) %>
         </div>
     </div>

@@ -21,8 +21,16 @@
             }
 
             a {
-                color: #999;
-                white-space: nowrap;
+                color: #222;
+
+                &:hover {
+                    color: #ffd100;
+                }
+
+                span {
+                    color: #999;
+                    white-space: nowrap;
+                }
             }
         }
     }
