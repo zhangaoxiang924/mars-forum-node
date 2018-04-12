@@ -94,7 +94,7 @@ header {
         }
 
         .login-registration {
-            width: 140px;
+            //width: 140px;
             height: 34px;
             float: right;
             margin: 12px 0;
@@ -112,15 +112,21 @@ header {
                 &.noColorBtn {
                     margin-right: 8px;
 
-                    &.userName {
-                        overflow: hidden;
-                        text-overflow: ellipsis;
-                        white-space: nowrap;
-                    }
-
                     &:hover {
                         color: #cfbc1a;
                     }
+                }
+
+                &.publish-forum-btn {
+                    width: 95px;
+
+                    a {
+                        color: #222;
+                    }
+                }
+
+                &.logOut {
+                    color: #888;
                 }
 
                 &.colorBtn {
@@ -130,6 +136,14 @@ header {
                         background: #ffd100;
                     }
                 }
+            }
+
+            .head-img {
+                float: left;
+                width: 35px;
+                height: 35px;
+                margin-left: 20px;
+                border-radius: 50%;
             }
         }
     }
