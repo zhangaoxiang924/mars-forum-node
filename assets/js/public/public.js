@@ -245,7 +245,13 @@ const utils = {
             $('.login-registration').html(`<p class="login noColorBtn">登录</p><p class="registration colorBtn">注册</p>`)
         } else {
             $('#forumBanner').hide()
-            $('.login-registration').html(`<p class="publish-forum-btn colorBtn"><a href="http://bbs.huoxing24.com/?/publish/">发布话题</a></p><img class="head-img" src=${Cookies.get('hx_forum_iconUrl')} alt=""><p class="logOut noColorBtn">[注销]</p>`)
+            $('.login-registration').html(`<p class="publish-forum-btn colorBtn">
+                                                <a href="http://bbs.huoxing24.com/?/publish/">发布话题</a>
+                                            </p>
+                                            <a href="http://bbs.huoxing24.com/?/people/${Cookies.get('hx_forum_nickName')}">
+                                                <img class="head-img" src=${Cookies.get('hx_forum_iconUrl')} alt="">
+                                            </a>
+                                            <p class="logOut noColorBtn">[注销]</p>`)
         }
         let urlSkip = getQueryString('url')
         let froum = getQueryString('froum')
@@ -300,8 +306,9 @@ const utils = {
                         $('.shade').hide()
                         $('.login-con, .login-con .login').hide()
                         Cookies.set('hx_forum_loginState', 0)
-                        window.location.reload()
                         layer.msg('登陆成功！')
+                        $('#iframe').attr('src', data.obj.bbsLogin)
+                        window.location.reload()
                         if (froumSkip && froum === 'login') {
                             window.location.href = urlSkip
                         }
@@ -382,13 +389,14 @@ const utils = {
                     if (data.code !== 1) {
                         layer.msg(data.msg)
                     } else {
-                        setCookies(data.obj)
-                        $('.shade').hide()
+                        // setCookies(data.obj)
                         $('.login-con, .login-con .register').hide()
-                        window.location.reload()
+                        // window.location.reload()
                         layer.msg('注册成功！')
                         if (froumSkip && froum === 'signin') {
                             window.location.href = urlSkip
+                        } else {
+                            $('.login-con, .login-con .login').show()
                         }
                     }
                 }
@@ -424,16 +432,14 @@ const utils = {
     },
     froumShow: function () {
         let froum = getQueryString('froum')
-        let urlSkip = getQueryString('url')
+        // let urlSkip = getQueryString('url')
         let froumSkip = window.location.href.indexOf('froum') !== -1
         if (froumSkip && froum === 'login') {
             $('.shade').show()
             $('.login-con, .login-con .login').show()
-            $('#iframe').attr('src', urlSkip)
         } else if (froumSkip && froum === 'signin') {
             $('.shade').show()
             $('.login-con, .login-con .register').show()
-            $('#iframe').attr('src', urlSkip)
         } else if (froumSkip && froum === 'signout') {
             deleteCookies()
             layer.msg('已注销！')
