@@ -20,11 +20,11 @@
             <div class="center-swiper">
                 <div class="swiper-container swiper-c-top">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide"><a target="_blank" href="http://www.huoxing24.com/"></a><img src="./img/swiper.jpg" alt=""><span>为何国内各大互联网公司纷纷研发区块链宠物? </span><p class="img-bg"></p>
+                        <div class="swiper-slide"><a target="_blank" href="#"></a><img src="./img/banner-1.jpg" alt=""><span>为何国内各大互联网公司纷纷研发区块链宠物? </span><p class="img-bg"></p>
                         </div>
-                        <div class="swiper-slide"><a target="_blank" href="http://www.huoxing24.com/"></a><img src="./img/swiper.jpg" alt=""><span>为何国内各大互联网公司纷纷研发区块链宠物? </span><p class="img-bg"></p>
+                        <div class="swiper-slide"><a target="_blank" href="#"></a><img src="./img/banner-2.jpg" alt=""><span>为何国内各大互联网公司纷纷研发区块链宠物? </span><p class="img-bg"></p>
                         </div>
-                        <div class="swiper-slide"><a target="_blank" href="http://www.huoxing24.com/"></a><img src="./img/swiper.jpg" alt=""><span>为何国内各大互联网公司纷纷研发区块链宠物? </span><p class="img-bg"></p>
+                        <div class="swiper-slide"><a target="_blank" href="#"></a><img src="./img/banner-3.jpg" alt=""><span>为何国内各大互联网公司纷纷研发区块链宠物? </span><p class="img-bg"></p>
                         </div>
                     </div>
                     <div class="swiper-pagination"></div>
@@ -85,15 +85,15 @@
             <div class="master">
                 <div class="master-title">
                     <h5>大咖入驻</h5>
-                    <a target="_blank" href="http://bbs.huoxing24.com/?/people/">查看更多</a>
+                    <!-- <a target="_blank" href="http://bbs.huoxing24.com/?/people/">查看更多</a> -->
                 </div>
                 <div class="master-box">
-                    <% for(var i = 0; i < master.length; i++){%>
+                    <% for(var i = 0; i < masterData.length; i++){%>
                     <div class="master-list">
-                        <a target="_blank" href="http://bbs.huoxing24.com/?/people/<%= master[i].user_name %>">
-                            <p class="portrait"><img src=<%= imgUrl + master[i].avatar_file %> alt=""></p>
-                            <p class="name"><%= master[i].user_name %><img src="../img/v.png"></p>
-                            <p class="issue">发布<span class="issue-num"><%= master[i].question_count %></span>个话题，获得<span class="reply"><%= master[i].answer_count %></span>个回复</p>
+                        <a target="_blank" href="">
+                            <p class="portrait"><img src=<%= masterData[i].portrait %> alt=""><span class="active"></span></p>
+                            <p class="name"><%= masterData[i].name %><img src="./img/v.png"></p>
+                            <p class="issue"><%= masterData[i].introduce %></p>
                         </a>
                     </div>
                     <%}%>

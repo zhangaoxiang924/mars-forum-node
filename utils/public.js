@@ -130,6 +130,7 @@ const ajaxPhpUrl = 'http://bbs.huoxing24.com/'
 const phpPrefix = '/bbs'
 const proxyPhpApi = [
     phpPrefix,
+    phpPrefix + '/?/api/main',
     phpPrefix + '/?/',
     phpPrefix + '/account/ajax/profiles_setting',
     phpPrefix + '/?/home/ajax/index_actions',
