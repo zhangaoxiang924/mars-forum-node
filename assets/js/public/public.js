@@ -308,9 +308,12 @@ const utils = {
                         Cookies.set('hx_forum_loginState', 0)
                         layer.msg('登陆成功！')
                         $('#iframe').attr('src', data.obj.bbsLogin)
-                        window.location.reload()
                         if (froumSkip && froum === 'login') {
                             window.location.href = urlSkip
+                        } else {
+                            setTimeout(function () {
+                                window.location.reload()
+                            }, 500)
                         }
                     }
                 }
@@ -321,7 +324,9 @@ const utils = {
         $('.login-registration').on('click', '.logOut', function () {
             deleteCookies()
             layer.msg('已注销！')
-            window.location.reload()
+            setTimeout(function () {
+                window.location.reload()
+            }, 500)
         })
 
         // 注册获取验证码
