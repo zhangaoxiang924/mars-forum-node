@@ -19,10 +19,6 @@ $(function () {
     let imgUrl = 'http://bbs.huoxing24.com/uploads/avatar/'
     let phpUrl = 'http://bbs.huoxing24.com'
 
-    $('.banner-close').on('click', function () {
-        $('.forum-banner').slideUp()
-    })
-
     const invitationItem = (data, loadMore) => {
         let dataArr = data.posts_list
         let list = ''

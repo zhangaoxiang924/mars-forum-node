@@ -245,6 +245,7 @@ const utils = {
             $('.login-registration').html(`<p class="login noColorBtn">登录</p><p class="registration colorBtn">注册</p>`)
         } else {
             $('#forumBanner').hide()
+            $('header').addClass('active')
             $('.login-registration').html(`<p class="publish-forum-btn colorBtn">
                                                 <a href="http://bbs.huoxing24.com/?/publish/">发布话题</a>
                                             </p>
@@ -394,9 +395,7 @@ const utils = {
                     if (data.code !== 1) {
                         layer.msg(data.msg)
                     } else {
-                        // setCookies(data.obj)
                         $('.login-con, .login-con .register').hide()
-                        // window.location.reload()
                         layer.msg('注册成功！')
                         if (froumSkip && froum === 'signin') {
                             window.location.href = urlSkip
@@ -423,8 +422,8 @@ const utils = {
     banner: function () {
         // banner关闭与展开
         $('#bannerClose').click(function () {
-            $('#forumBanner').toggleClass('active')
-            $('header').toggleClass('active')
+            $('header').addClass('active')
+            $('#forumBanner').addClass('active')
         })
     },
     footer: function () {
@@ -448,14 +447,9 @@ const utils = {
         } else if (froumSkip && froum === 'signout') {
             deleteCookies()
             layer.msg('已注销！')
-            // window.location.reload()
         }
     }
 }
-utils.banner()
-utils.header()
-utils.footer()
-utils.froumShow()
 
 export {
     isPc,
