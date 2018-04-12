@@ -20,11 +20,11 @@
             <div class="center-swiper">
                 <div class="swiper-container swiper-c-top">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide"><a target="_blank" href="#"></a><img src="./img/banner-1.jpg" alt=""><span>为何国内各大互联网公司纷纷研发区块链宠物? </span><p class="img-bg"></p>
+                        <div class="swiper-slide"><a target="_blank" href="http://bbs.huoxing24.com/?/question/137"></a><img src="./img/banner-2.jpg" alt=""><span>#火星社区上线#我有话儿要对火星说 </span><p class="img-bg"></p>
                         </div>
-                        <div class="swiper-slide"><a target="_blank" href="#"></a><img src="./img/banner-2.jpg" alt=""><span>为何国内各大互联网公司纷纷研发区块链宠物? </span><p class="img-bg"></p>
+                        <div class="swiper-slide" id="whiteBook"><a href="#"></a><img src="./img/banner-1.jpg" alt=""><span>和李笑来、薛蛮子、陈伟星、赵东等大咖一起拆解白皮书 </span><p class="img-bg"></p>
                         </div>
-                        <div class="swiper-slide"><a target="_blank" href="#"></a><img src="./img/banner-3.jpg" alt=""><span>为何国内各大互联网公司纷纷研发区块链宠物? </span><p class="img-bg"></p>
+                        <div class="swiper-slide"><a target="_blank" href="http://bbs.huoxing24.com/?/question/72"></a><img src="./img/banner-3.jpg" alt=""><span>王峰十问嘉宾，下一期你最想看到谁？</span><p class="img-bg"></p>
                         </div>
                     </div>
                     <div class="swiper-pagination"></div>
@@ -79,9 +79,9 @@
             </div>
         </div>
         <div class="c-right">
-            <!--<div class="advertising">
-                <a><img src="../img/blue.png" alt=""></a>
-            </div>-->
+            <div class="advertising">
+                <a target="_blank" href="http://bbs.huoxing24.com/?/topic/拆解白皮书"><img src="../img/white-book.jpg" alt=""></a>
+            </div>
             <div class="master">
                 <div class="master-title">
                     <h5>大咖入驻</h5>
@@ -90,7 +90,7 @@
                 <div class="master-box">
                     <% for(var i = 0; i < masterData.length; i++){%>
                     <div class="master-list">
-                        <a target="_blank" href="">
+                        <a target="_blank" href=<%= masterData[i].url %>>
                             <p class="portrait"><img src=<%= masterData[i].portrait %> alt=""><span class="active"></span></p>
                             <p class="name"><%= masterData[i].name %><img src="./img/v.png"></p>
                             <p class="issue"><%= masterData[i].introduce %></p>

@@ -28,7 +28,7 @@ $(function () {
         let list = ''
         console.log(data)
         $('#conterMore').attr('data-total', data.total_rows)
-        if (parseInt(data.total_rows) > 10) {
+        if (parseInt(data.total_rows) > 20) {
             $('#conterMore').css('display', 'block')
         } else {
             $('#conterMore').css('display', 'none')
@@ -67,6 +67,11 @@ $(function () {
     }
 
     // 中间swiper
+    $('#whiteBook').on('click', function () {
+        if (parseInt($('#leftBottom li').eq(0).data('id')) === 1) {
+            $('ul#leftBottom li').eq(0).click()
+        }
+    })
     let conterSwiper = new Swiper('.swiper-c-top', {
         pagination: '.swiper-pagination',
         paginationClickable: true,
@@ -74,11 +79,13 @@ $(function () {
         autoplayDisableOnInteraction: false,
         preventClicks: false
     })
-    conterSwiper.detachEvents()
+    // conterSwiper.detachEvents()
+    conterSwiper.autoplay = true
 
     // 中间左侧/ top
     async function indexLeftTopData (key, type, page) {
-        const data = await new Promise((resolve, reject) => {
+        const data = await
+        new Promise((resolve, reject) => {
             axiosAjax({
                 type: 'GET',
                 url: `${proxyUrlBbs}/api/main?${key}=${type}&page=${page}`,
@@ -226,7 +233,7 @@ $(function () {
     $('#conterMore').on('click', function () {
         pageNum++
         let total = $(this).data('total')
-        let pagination = Math.ceil(total / 10)
+        let pagination = Math.ceil(total / 20)
         if (pageNum > pagination) {
             layer.msg('没有更多')
             return false
