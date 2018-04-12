@@ -4,6 +4,7 @@ const utils = require('../utils/public')
 
 const axiosAjax = utils.axiosAjax
 const ajaxPhpUrl = utils.ajaxPhpUrl
+const formatTime = utils.formatTime
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -24,7 +25,16 @@ router.get('/', function (req, res, next) {
     }
 
     indexData().then((data) => {
-        res.render('index', {...data})
+        const pList = data.posts_list
+        let articleTime = []
+        for (let value of pList) {
+            articleTime.push(formatTime(value.add_time))
+        }
+
+        res.render('index', {
+            ...data,
+            articleTime: articleTime
+        })
     })
 })
 

@@ -4,12 +4,21 @@ private: ['./css/index.css']
 }) %>
 
 <div class="main clearfix">
+<<<<<<< HEAD:views/index.ejs
     <%- include('index/banner', {
     warrior: '数据'
     }) %>
     <div class="ninini"><%= code.toString() %></div>
+=======
+>>>>>>> online-version:viewsejs/index.ejs
     <%- include('index/content', {
-    warrior: '数据'
+    leftColumn: sidebar_hot_users,
+    master: sidebar_hot_users,
+    hotTag: sidebar_hot_topics,
+    postsList: posts_list,
+    loginState: wefollow,
+    imgUrl: 'http://bbs.huoxing24.com/uploads/avatar/',
+    total: total_rows
     }) %>
 </div>
 

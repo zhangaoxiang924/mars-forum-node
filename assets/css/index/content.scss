@@ -55,6 +55,8 @@
                             height: 20px;
 
                             img {
+                                width: 16px;
+                                height: 16px;
                                 vertical-align: top;
                                 margin-top: 8px;
                             }
@@ -246,6 +248,10 @@
                                     color: #888;
                                     font-size: 14px;
 
+                                    a {
+                                        color: #888;
+                                    }
+
                                     &.portrait-name,
                                     &.comment {
                                         height: 20px;
@@ -357,26 +363,21 @@
                                     height: 50px;
                                     border-radius: 100%;
                                 }
-
-                                span {
-                                    position: absolute;
-                                    bottom: 0;
-                                    right: 0;
-
-                                    &.active {
-                                        width: 16px;
-                                        height: 16px;
-                                        background: url("../img/v.png") no-repeat;
-                                    }
-                                }
                             }
 
                             .name {
                                 position: absolute;
                                 left: 60px;
-                                top: 10px;
+                                top: 5px;
                                 font-size: 14px;
                                 color: #222;
+
+                                img {
+                                    width: 15px;
+                                    height: 14px;
+                                    vertical-align: top;
+                                    margin: 0 0 0 8px;
+                                }
                             }
 
                             .issue {
@@ -385,6 +386,11 @@
                                 top: 30px;
                                 font-size: 12px;
                                 color: #666;
+
+                                span {
+                                    padding: 0 3px;
+                                    font-size: 14px;
+                                }
                             }
                         }
                     }
@@ -408,6 +414,10 @@
                         margin-bottom: 10px;
                         font-size: 12px;
                         cursor: pointer;
+
+                        a {
+                            color: #666;
+                        }
 
                         &:hover {
                             background: #ffd100;

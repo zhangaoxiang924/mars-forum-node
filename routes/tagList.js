@@ -13,7 +13,7 @@ const ajaxPhpUrl = utils.ajaxPhpUrl
 /* GET tagList listing. */
 router.get('/', function (req, res, next) {
     // res.render('tagList', {title: 'tagList'})
-    async function indexData() {
+    async function indexData () {
         const data = await new Promise((resolve) => {
             axiosAjax({
                 type: 'GET',

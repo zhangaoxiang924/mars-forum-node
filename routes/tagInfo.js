@@ -10,6 +10,7 @@ const {axiosAjax, ajaxPhpUrl} = require('../utils/public')
 /* GET tagList listing. */
 router.get('/', function (req, res, next) {
     let {id} = req.query
+
     async function indexData () {
         const data = await new Promise((resolve) => {
             axiosAjax({
