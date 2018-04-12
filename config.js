@@ -1,5 +1,5 @@
 module.exports = {
-    host: '192.168.84.1',
+    host: '192.168.84.44',
     port: '8060',
     publicPath: '../',
     vendors: [

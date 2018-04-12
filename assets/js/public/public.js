@@ -244,7 +244,8 @@ const utils = {
         if (Cookies.get('hx_forum_token') === undefined) {
             $('.login-registration').html(`<p class="login noColorBtn">登录</p><p class="registration colorBtn">注册</p>`)
         } else {
-            $('.login-registration').html(`<p class="userName noColorBtn" title=${Cookies.get('hx_forum_nickName')}>${Cookies.get('hx_forum_nickName')}</p><p class="logOut colorBtn">注销</p>`)
+            $('#forumBanner').hide()
+            $('.login-registration').html(`<p class="publish-forum-btn colorBtn"><a href="http://bbs.huoxing24.com/?/publish/">发布话题</a></p><img class="head-img" src=${Cookies.get('hx_forum_iconUrl')} alt=""><p class="logOut noColorBtn">[注销]</p>`)
         }
 
         // 弹出登陆框
@@ -292,6 +293,7 @@ const utils = {
                     if (data.code !== 1) {
                         layer.msg(data.msg)
                     } else {
+                        $('#forumBanner').toggleClass('active')
                         setCookies(data.obj)
                         $('.shade').hide()
                         $('.login-con, .login-con .login').hide()
