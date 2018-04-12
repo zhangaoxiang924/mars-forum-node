@@ -247,7 +247,9 @@ const utils = {
             $('#forumBanner').hide()
             $('.login-registration').html(`<p class="publish-forum-btn colorBtn"><a href="http://bbs.huoxing24.com/?/publish/">发布话题</a></p><img class="head-img" src=${Cookies.get('hx_forum_iconUrl')} alt=""><p class="logOut noColorBtn">[注销]</p>`)
         }
-
+        let urlSkip = getQueryString('url')
+        let froum = getQueryString('froum')
+        let froumSkip = window.location.href.indexOf('froum') !== -1
         // 弹出登陆框
         $('.login').click(function (e) {
             e.stopPropagation()
@@ -300,6 +302,9 @@ const utils = {
                         Cookies.set('hx_forum_loginState', 0)
                         window.location.reload()
                         layer.msg('登陆成功！')
+                        if (froumSkip && froum === 'login') {
+                            window.location.href = urlSkip
+                        }
                     }
                 }
             })
@@ -382,6 +387,9 @@ const utils = {
                         $('.login-con, .login-con .register').hide()
                         window.location.reload()
                         layer.msg('注册成功！')
+                        if (froumSkip && froum === 'signin') {
+                            window.location.href = urlSkip
+                        }
                     }
                 }
             })
@@ -413,8 +421,30 @@ const utils = {
         }, function () {
             $wxFx.hide()
         })
+    },
+    froumShow: function () {
+        let froum = getQueryString('froum')
+        let urlSkip = getQueryString('url')
+        let froumSkip = window.location.href.indexOf('froum') !== -1
+        if (froumSkip && froum === 'login') {
+            $('.shade').show()
+            $('.login-con, .login-con .login').show()
+            $('#iframe').attr('src', urlSkip)
+        } else if (froumSkip && froum === 'signin') {
+            $('.shade').show()
+            $('.login-con, .login-con .register').show()
+            $('#iframe').attr('src', urlSkip)
+        } else if (froumSkip && froum === 'signout') {
+            deleteCookies()
+            layer.msg('已注销！')
+            // window.location.reload()
+        }
     }
 }
+utils.banner()
+utils.header()
+utils.footer()
+utils.froumShow()
 
 export {
     isPc,

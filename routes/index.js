@@ -30,7 +30,7 @@ router.get('/', function (req, res, next) {
         for (let value of pList) {
             articleTime.push(formatTime(value.add_time))
         }
-
+        console.log(data)
         res.render('index', {
             ...data,
             articleTime: articleTime

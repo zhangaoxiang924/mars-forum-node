@@ -14,6 +14,7 @@ $(function () {
     utils.header()
     utils.banner()
     utils.footer()
+    utils.froumShow()
 
     let imgUrl = 'http://bbs.huoxing24.com/uploads/avatar/'
     let phpUrl = 'http://bbs.huoxing24.com'
@@ -25,7 +26,7 @@ $(function () {
     const invitationItem = (data, loadMore) => {
         let dataArr = data.posts_list
         let list = ''
-
+        console.log(data)
         $('#conterMore').attr('data-total', data.total_rows)
         if (parseInt(data.total_rows) > 10) {
             $('#conterMore').css('display', 'block')
@@ -80,7 +81,7 @@ $(function () {
         const data = await new Promise((resolve, reject) => {
             axiosAjax({
                 type: 'GET',
-                url: `${proxyUrlBbs}?${key}=${type}&page=${page}`,
+                url: `${proxyUrlBbs}/api/main?${key}=${type}&page=${page}`,
                 // params: {sort_type: 'hot', page: page},
                 fn: function (data) {
                     resolve(data)
@@ -170,7 +171,7 @@ $(function () {
         const data = await new Promise((resolve, reject) => {
             axiosAjax({
                 type: 'GET',
-                url: `${proxyUrlBbs}/?category=${id}&${key}=${type}&page=${page}`,
+                url: `${proxyUrlBbs}/api/main/?category=${id}&${key}=${type}&page=${page}`,
                 // params: classifyData[index],
                 fn: function (data) {
                     resolve(data)
