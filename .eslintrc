@@ -29,8 +29,7 @@
     "$": true,
     "wx": true,
     "Swiper": true,
-    "layer": true,
-    "AWS": true
+    "layer": true
   },
   "env": {
     "browser": true,

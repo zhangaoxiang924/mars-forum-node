@@ -1,35 +1,21 @@
-const createError = require('http-errors')
-const express = require('express')
-const path = require('path')
-const cookieParser = require('cookie-parser')
-const logger = require('morgan')
-const fileStreamRotator = require('file-stream-rotator')
-const fs = require('fs')
+var createError = require('http-errors')
+var express = require('express')
+var path = require('path')
+var cookieParser = require('cookie-parser')
+var logger = require('morgan')
 
-const indexRouter = require('./routes/index')
-const usersRouter = require('./routes/users')
-const proxyRouter = require('./routes/proxy')
-const createForumRouter = require('./routes/createForum')
+var indexRouter = require('./routes/index')
+var usersRouter = require('./routes/users')
+var proxyRouter = require('./routes/proxy')
 
-const app = express()
-app.use('/nodeproxy', proxyRouter)
+var app = express()
+app.use('/api', proxyRouter)
 
 // view engine setup
-app.set('views', path.join(__dirname, 'viewsejs'))
+app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
-// logger
-const logDir = '/data/node_website/mars-logs'
-fs.existsSync(logDir) || fs.mkdirSync(logDir)
-const accessLogStream = fileStreamRotator.getStream({
-    date_format: 'YYYYMMDD',
-    filename: path.join(logDir, 'logs-%DATE%.log'),
-    frequency: 'daily',
-    verbose: true
-})
 app.use(logger('dev'))
-app.use(logger('common', {stream: accessLogStream}))
-
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 app.use(cookieParser())
@@ -37,7 +23,6 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', indexRouter)
 app.use('/users', usersRouter)
-app.use('/createForum', createForumRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
