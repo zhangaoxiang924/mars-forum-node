@@ -279,8 +279,7 @@ const utils = {
             }
         })
 
-        // 登陆请求
-        $('.login-btn').click(function () {
+        const loginFunc = () => {
             let $phoneInput = $('.phone-input').val()
             let $password = $('.password-input').val()
             if ($phoneInput.trim() === '' || !isPoneAvailable($phoneInput)) {
@@ -319,16 +318,50 @@ const utils = {
                     }
                 }
             })
+        }
+
+        // 登陆请求
+        $('.login-btn').click(function () {
+            loginFunc()
         })
+        $(document).on('keydown', '.login-con-main.login input', function (event) {
+            if (parseInt(event.keyCode) === 13) {
+                loginFunc()
+            }
+        })
+
+        const signoutFunc = () => {
+            axiosAjax({
+                type: 'post',
+                url: proxyUrlPc + '/passport/account/logout',
+                params: {},
+                fn: (data) => {
+                    if (data.code !== 1) {
+                        layer.msg(data.msg)
+                    } else {
+                        deleteCookies()
+                        layer.msg('已注销！')
+                        $('#iframe').attr('src', data.obj)
+
+                        if (urlSkip) {
+                            window.location.href = urlSkip
+                        } else {
+                            setTimeout(function () {
+                                window.location.reload()
+                            }, 500)
+                        }
+                    }
+                }
+            })
+        }
 
         // 注销
         $('.login-registration').on('click', '.logOut', function () {
-            deleteCookies()
-            layer.msg('已注销！')
-            setTimeout(function () {
-                window.location.reload()
-            }, 500)
+            signoutFunc()
         })
+        if (forum && forum === 'signout') {
+            signoutFunc()
+        }
 
         // 注册获取验证码
         $('.getCode').click(function () {
@@ -350,8 +383,7 @@ const utils = {
             })
         })
 
-        // 注册请求
-        $('.register-btn').click(function () {
+        const signinFunc = () => {
             let $authCode = $('.auth-code-item input').val()
             let $password = $('.register-pw input').val()
             let $passwordConfirm = $('.register-pw-confirm input').val()
@@ -405,8 +437,17 @@ const utils = {
                     }
                 }
             })
-        })
+        }
 
+        // 注册请求
+        $('.register-btn').click(function () {
+            signinFunc()
+        })
+        $(document).on('keydown', '.login-con-main.register input', function (event) {
+            if (parseInt(event.keyCode) === 13) {
+                signinFunc()
+            }
+        })
         $('.to-login').click(function (e) {
             e.stopPropagation()
             $('.login-con .register').hide()

@@ -120,6 +120,7 @@ const proxyJavaApi = [
     javaPrefix + '/info/news/getbyid',
     javaPrefix + '/passport/account/login',
     javaPrefix + '/passport/account/getverifcode',
+    javaPrefix + '/passport/account/logout',
     javaPrefix + '/passport/account/register'
 ]
 
