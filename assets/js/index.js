@@ -14,7 +14,7 @@ $(function () {
     utils.header()
     utils.banner()
     utils.footer()
-    utils.froumShow()
+    utils.forumShow()
 
     let imgUrl = 'http://bbs.huoxing24.com/uploads/avatar/'
     let phpUrl = 'http://bbs.huoxing24.com'
