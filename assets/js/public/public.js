@@ -255,8 +255,8 @@ const utils = {
                                             <p class="logOut noColorBtn">[注销]</p>`)
         }
         let urlSkip = getQueryString('url')
-        let froum = getQueryString('froum')
-        let froumSkip = window.location.href.indexOf('froum') !== -1
+        let forum = getQueryString('forum')
+        let forumSkip = window.location.href.indexOf('forum') !== -1
         // 弹出登陆框
         $('.login').click(function (e) {
             e.stopPropagation()
@@ -308,7 +308,7 @@ const utils = {
                         Cookies.set('hx_forum_loginState', 0)
                         layer.msg('登陆成功！')
                         $('#iframe').attr('src', data.obj.bbsLogin)
-                        if (froumSkip && froum === 'login') {
+                        if (forumSkip && forum === 'login') {
                             window.location.href = urlSkip
                         } else {
                             setTimeout(function () {
@@ -429,7 +429,7 @@ const utils = {
                     } else {
                         $('.login-con, .login-con .register').hide()
                         layer.msg('注册成功！')
-                        if (froumSkip && froum === 'signin') {
+                        if (forumSkip && forum === 'signin') {
                             window.location.href = urlSkip
                         } else {
                             $('.login-con, .login-con .login').show()
@@ -475,17 +475,16 @@ const utils = {
             $wxFx.hide()
         })
     },
-    froumShow: function () {
-        let froum = getQueryString('froum')
-        // let urlSkip = getQueryString('url')
-        let froumSkip = window.location.href.indexOf('froum') !== -1
-        if (froumSkip && froum === 'login') {
+    forumShow: function () {
+        let forum = getQueryString('forum')
+        let forumSkip = window.location.href.indexOf('forum') !== -1
+        if (forumSkip && forum === 'login') {
             $('.shade').show()
             $('.login-con, .login-con .login').show()
-        } else if (froumSkip && froum === 'signin') {
+        } else if (forumSkip && forum === 'signin') {
             $('.shade').show()
             $('.login-con, .login-con .register').show()
-        } else if (froumSkip && froum === 'signout') {
+        } else if (forumSkip && forum === 'signout') {
             deleteCookies()
             layer.msg('已注销！')
         }
