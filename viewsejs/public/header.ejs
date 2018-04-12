@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="区块链,区块链项目,区块链是什么,区块链概念股,区块链论坛,区块链社区,区块链服务,区块链培训，区块链资讯,区块链活动,区块链市场,区块链投资,区块链百科,虚拟币,数字货币,挖矿,虚拟币是什么，数字货币是什么,怎么挖矿,挖矿是什么,coinmarketcap,比特币,比特币今日价格,比特币交易平台，莱特币,以太坊">
+    <meta name="description" content="火星社区，中国区块链开放大学">
+    <meta name="author" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="viewport"
+          content="
+          width=device-width,
+          initial-scale=1.0,
+          minimum-scale=1.0,
+          maximum-scale=1.0,
+          user-scalable=no"/>
+    <link rel='icon' href='./img/icon.ico' type='image/x-ico'>
+    <title>火星社区</title>
+
+    <!--[if lte IE 8]>
+    <script src="http://static.huoxing24.com/assets/browser-tips.js"></script>
+    <![endif]-->
+
+    <!--publlic-->
+
+    <!--plugin-->
+    <% for (var i = 0 in plugin) { %>
+    <link href="<%= plugin[i] %>" rel="stylesheet">
+    <% } %>
+
+    <!--private-->
+    <% for (var i = 0 in private) { %>
+    <link href="<%= private[i] %>" rel="stylesheet">
+    <% } %>
+
+</head>
+<body>
+<div class="lk-loading active" id="pageLoading">
+    <div class="lk-loading-center">
+        <div class="lk-loading-center-absolute">
+            <div class="round round-one"></div>
+            <div class="round round-two"></div>
+            <div class="round round-three"></div>
+        </div>
+    </div>
+</div>
+<header>
+    <div class="header-box">
+        <div class="logo"><img src="./img/logo.png" alt=""></div>
+        <div class="header-nav" id="headerNav">
+            <a target="_blank" href="http://www.huoxing24.com">首页</a>
+            <a target="_blank" href="/" class="forum">社群</a>
+            <a target="_blank" href="http://www.huoxing24.com/app">火星APP</a>
+        </div>
+        <div class="header-search" style="display: none">
+            <input type="text" placeholder="帖子/用户" autocomplete="off" name="q" id="aw-search-query">
+            <p class="search-btn"><img src="./img/search.png" alt=""></p>
+
+            <!--wecenter拷贝-->
+            <div class="aw-dropdown" style="display: none;">
+                <div class="mod-body">
+                    <p class="title">输入关键字进行搜索</p>
+                    <ul class="aw-dropdown-list collapse"></ul>
+                    <p class="search"><span>搜索:</span><a onclick="$('#global_search_form').submit();"></a></p>
+                </div>
+                <div class="mod-footer">
+                    <a href="http://bbs.huoxing24.com/?/publish" onclick="$('#header_publish').click();" class="pull-right btn btn-mini btn-success publish">发起问题</a>
+                </div>
+            </div>
+        </div>
+        <div class="login-registration">
+            <p class="login noColorBtn">登录</p>
+            <p class="registration colorBtn">注册</p>
+        </div>
+    </div>
+</header>
+<div class="forum-banner close" id="forumBanner">
+    <div class="banner-close" id="bannerClose"><img src="./img/close.png" alt=""></div>
+    <div class="banner-box">
+        <div class="banner-img">
+            <img src="./img/banner.jpg" alt="">
+            <h3>在火星社区，聊区块链</h3>
+        </div>
+        <div class="banner-logo-registration">
+            <p class="logo login">马上登录</p>
+            <p class="registration">立即注册</p>
+        </div>
+    </div>
+</div>
+
+

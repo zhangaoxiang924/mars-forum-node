@@ -1,0 +1,28 @@
+<%- include('./public/header', {
+plugin: ['http://static.huoxing24.com/assets/swiper.min.css'],
+private: ['./css/index.css']
+}) %>
+
+<div class="main clearfix">
+    <%- include('index/content', {
+    leftColumn: sidebar_hot_users,
+    master: sidebar_hot_users, // 大咖入驻
+    hotTag: sidebar_hot_topics,
+    postsList: posts_list,
+    loginState: wefollow,
+    imgUrl: 'http://bbs.huoxing24.com/uploads/avatar/',
+    total: total_rows,
+    masterData: [
+    {portrait: './img/chushuai.jpg', name: '帅初', introduce: 'Qtum量子链发起人，王峰十问特邀嘉宾，毕业于Draper University和中国科学院'},
+    {portrait: './img/maozhihon.jpg', name: '冒志鸿', introduce: 'ArcBlock创始人兼CEO，在美创立ArcBlock，和原微软同事Flavien Charlon合作打造新一代区块链应用服务平台ArcBlock'},
+    {portrait: './img/chenrong.jpg', name: '陈榕', introduce: '亦来云基金会联合创始人，在伊利诺伊大学研究过七年操作系统，在 微软总部参与过Windows操作系统底层模块的开发'},
+    {portrait: './img/dahonfei.jpg', name: '达鸿飞', introduce: '小蚁区块链创始人，中国区块链行业的代表人物，中国比特币社区的早期参与者，上海浦东国际金融学会金融科技组委员'},
+    {portrait: './img/caofeng.jpg', name: '曹锋', introduce: '博士，PCHAIN发起人，中国第一个区块链国际专利发明人，ChinaLedger共同发起人'},
+    ]
+    }) %>
+</div>
+
+<%- include('./public/footer', {
+plugin: ['http://static.huoxing24.com/assets/swiper.jquery.min.js'],
+private: ['./js/index.js']
+}) %>

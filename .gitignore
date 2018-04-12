@@ -7,6 +7,7 @@
 /public/css
 /public/js
 /public/img
+/logs.log
 
 # Windows image file caches
 Thumbs.db
@@ -58,3 +59,4 @@ Temporary Items
 src/containers/Index/index.jsx
 src/containers/Main/HeaderNav/index.jsx
 src/locale/zh.js
+routes/index.js

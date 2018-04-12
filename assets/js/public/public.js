@@ -7,6 +7,9 @@
 import axios from 'axios'
 import Cookies from 'js-cookie'
 
+const proxyUrlBbs = '/nodeproxy/bbs'
+const proxyUrlPc = '/nodeproxy/pc'
+
 const isPc = () => {
     const userAgent = window.navigator.userAgent.toLowerCase()
 
@@ -182,6 +185,40 @@ const axiosAjax = (arg) => {
     })
 }
 
+/**
+ * Intro: time format
+ */
+const formatTime = (date, str) => {
+    let _str = !str ? '-' : str
+    const zero = (m) => {
+        return m < 10 ? '0' + m : m
+    }
+    let time = new Date(parseInt(date) * 1000)
+    let y = time.getFullYear()
+    let m = time.getMonth() + 1
+    let d = time.getDate()
+    if (date) {
+        return y + _str + zero(m) + _str + zero(d)
+    } else {
+        return ''
+    }
+}
+
+const getTime = (publishTime, requestTime, justNow, minuteAgo, hourAgo) => {
+    let limit = parseInt((requestTime - publishTime)) / 1000
+    let content = ''
+    if (limit < 60) {
+        content = justNow
+    } else if (limit >= 60 && limit < 3600) {
+        content = Math.floor(limit / 60) + minuteAgo
+    } else if (limit >= 3600 && limit < 86400) {
+        content = Math.floor(limit / 3600) + hourAgo
+    } else {
+        content = formatTime(publishTime)
+    }
+    return content
+}
+
 // 登陆/注册时设置 cookies
 const setCookies = (obj) => {
     for (let key in obj) {
@@ -202,13 +239,14 @@ const deleteCookies = () => {
 }
 
 const utils = {
-    banner: function () {
+    header: function () {
         // 根据是否登陆展示不同按钮
         if (Cookies.get('hx_forum_token') === undefined) {
             $('.login-registration').html(`<p class="login noColorBtn">登录</p><p class="registration colorBtn">注册</p>`)
         } else {
             $('.login-registration').html(`<p class="userName noColorBtn" title=${Cookies.get('hx_forum_nickName')}>${Cookies.get('hx_forum_nickName')}</p><p class="logOut colorBtn">注销</p>`)
         }
+
         // 弹出登陆框
         $('.login').click(function (e) {
             e.stopPropagation()
@@ -245,7 +283,7 @@ const utils = {
             }
             axiosAjax({
                 type: 'post',
-                url: '/api/pc/passport/account/login',
+                url: proxyUrlPc + '/passport/account/login',
                 params: {
                     phonenum: $phoneInput,
                     password: $password
@@ -257,23 +295,26 @@ const utils = {
                         setCookies(data.obj)
                         $('.shade').hide()
                         $('.login-con, .login-con .login').hide()
+                        Cookies.set('hx_forum_loginState', 0)
                         window.location.reload()
                         layer.msg('登陆成功！')
                     }
                 }
             })
         })
+
         // 注销
         $('.login-registration').on('click', '.logOut', function () {
             deleteCookies()
             layer.msg('已注销！')
             window.location.reload()
         })
+
         // 注册获取验证码
         $('.getCode').click(function () {
             axiosAjax({
                 type: 'post',
-                url: '/api/pc/passport/account/getverifcode',
+                url: proxyUrlPc + '/passport/account/getverifcode',
                 params: {
                     countrycode: 86,
                     verifcategory: 1, // 验证码类别 1 注册 2 找回密码
@@ -288,6 +329,7 @@ const utils = {
                 }
             })
         })
+
         // 注册请求
         $('.register-btn').click(function () {
             let $authCode = $('.auth-code-item input').val()
@@ -322,7 +364,7 @@ const utils = {
 
             axiosAjax({
                 type: 'post',
-                url: '/api/pc/passport/account/register',
+                url: proxyUrlPc + '/passport/account/register',
                 params: {
                     verifcode: $authCode,
                     password: $password,
@@ -354,11 +396,23 @@ const utils = {
             $('.login-con .register').show()
             $('.login-con .login').hide()
         })
+    },
+    banner: function () {
+        // banner关闭与展开
+        $('#bannerClose').click(function () {
+            $('#forumBanner').toggleClass('active')
+            $('header').toggleClass('active')
+        })
+    },
+    footer: function () {
+        const $wxFx = $('#wxFx')
+        $('#wxShare').hover(function () {
+            $wxFx.show()
+        }, function () {
+            $wxFx.hide()
+        })
     }
 }
-
-const proxyUrlBbs = '/api/bbs'
-const proxyUrlPc = '/api/pc'
 
 export {
     isPc,
@@ -374,5 +428,7 @@ export {
     isPoneAvailable,
     utils,
     proxyUrlBbs,
-    proxyUrlPc
+    proxyUrlPc,
+    getTime,
+    formatTime
 }

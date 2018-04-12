@@ -1,0 +1,137 @@
+<div class="forum-content clearfix">
+    <div class="content-box">
+        <div class="c-left">
+            <div class="left-top">
+                <ul id="leftTop">
+                    <li data-type="1" class="active"><span><img src="./img/jd.png" alt=""></span>今日推荐</li>
+                    <li data-type="hot"><span><img src="./img/attention.png" alt=""></span>今日热点</li>
+                    <li data-type="new"><span><img src="./img/hotCont.png" alt=""></span>最新内容</li>
+                    <!-- <li data-type=<%= loginState.follow %>><span><img src="./img/attention.png" alt=""></span>我的关注</li> -->
+                </ul>
+            </div>
+            <div class="left-bottom">
+                <h5>社区板块</h5>
+                <ul id="leftBottom">
+                    <!-- <li><span><img src="./img/jd.png" alt=""></span>币圈打假</li> -->
+                </ul>
+            </div>
+        </div>
+        <div class="c-center">
+            <div class="center-swiper">
+                <div class="swiper-container swiper-c-top">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><a target="_blank" href="#"></a><img src="./img/banner-1.jpg" alt=""><span>为何国内各大互联网公司纷纷研发区块链宠物? </span><p class="img-bg"></p>
+                        </div>
+                        <div class="swiper-slide"><a target="_blank" href="#"></a><img src="./img/banner-2.jpg" alt=""><span>为何国内各大互联网公司纷纷研发区块链宠物? </span><p class="img-bg"></p>
+                        </div>
+                        <div class="swiper-slide"><a target="_blank" href="#"></a><img src="./img/banner-3.jpg" alt=""><span>为何国内各大互联网公司纷纷研发区块链宠物? </span><p class="img-bg"></p>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+            <div class="content-center-box">
+                <div class="list-tab" id="listTab">
+                    <p class="active" data-type="new">最新<span class="active"></span></p>
+                    <p data-type="hot">最热<span class=""></span></p>
+                    <p data-type="1">精华<span class=""></span></p>
+                </div>
+                <div class="list-box">
+                    <% for(var i = 0; i < postsList.length; i++){%>
+                    <div class="list">
+                        <div class="introduce">
+                            <p>
+                                <a target="_blank" href="http://bbs.huoxing24.com/?/question/<%= postsList[i].question_id %>"><%= postsList[i].question_content %></a>
+                                <% for(var j = 0; j < postsList[i].topics.length; j++){%>
+                                <a target="_blank" href="http://bbs.huoxing24.com/?/topic/<%= postsList[i].topics[j].topic_title %>">
+                                    <span><%= postsList[i].topics[j].topic_title %></span>
+                                </a>
+                                <%}%>
+                            </p>
+                            <div class="user-box">
+                                <div class="portrait">
+                                    <a target="_blank" href="http://bbs.huoxing24.com/?/people/<%= postsList[i].user_info.user_name %>">
+                                        <span class="portrait-img"><img src=<%= imgUrl + postsList[i].user_info.avatar_file %> alt=""></span>
+                                        <span class="portrait-name"><%= postsList[i].user_info.user_name %></span>
+                                    </a>
+                                    <span class="time"><%= articleTime[i] %></span>
+                                    <span class="comment"><font><%= postsList[i].answer_count %></font>评论</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <%}%>
+                    <!-- <div class="list">
+                        <div class="introduce">
+                            <p><a target="_blank" href="">首份区块链职场年龄图谱，85后成为行业主力军首份区块链职场年龄图谱，85后成为行业主力军年龄年龄</a><span>比特币</span><span>安全</span></p>
+                            <div class="user-box">
+                                <div class="portrait">
+                                    <span class="portrait-img"><img src="./img/blue.png" alt=""></span>
+                                    <span class="portrait-name">admin</span>
+                                    <span class="time">2小时前</span>
+                                    <span class="comment"><font>20</font>评论</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="more" id="conterMore" style="<%= total > 10 ? 'display: block;': 'display: none;' %>" data-total=<%= total %>>点击加载更多</div>
+            </div>
+        </div>
+        <div class="c-right">
+            <!--<div class="advertising">
+                <a><img src="../img/blue.png" alt=""></a>
+            </div>-->
+            <div class="master">
+                <div class="master-title">
+                    <h5>大咖入驻</h5>
+                    <!-- <a target="_blank" href="http://bbs.huoxing24.com/?/people/">查看更多</a> -->
+                </div>
+                <div class="master-box">
+                    <% for(var i = 0; i < masterData.length; i++){%>
+                    <div class="master-list">
+                        <a target="_blank" href="">
+                            <p class="portrait"><img src=<%= masterData[i].portrait %> alt=""><span class="active"></span></p>
+                            <p class="name"><%= masterData[i].name %><img src="./img/v.png"></p>
+                            <p class="issue"><%= masterData[i].introduce %></p>
+                        </a>
+                    </div>
+                    <%}%>
+                    <!-- <div class="master-list">
+                        <a target="_blank" href="">
+                            <p class="portrait"><img src="./img/blue.png" alt=""><span class="active"></span></p>
+                            <p class="name">薛蛮子</p>
+                            <p class="issue">发布<span class="issue-num">1000</span>个话题，获得<span class="reply">5000</span>个回复</p>
+                        </a>
+                    </div> -->
+                </div>
+            </div>
+            <div class="hot-tags">
+                <div class="tags-title">
+                    <h5>热门标签</h5>
+                    <a target="_blank" href="http://bbs.huoxing24.com/?/topic/channel-hot">查看更多</a>
+                </div>
+                <ul>
+                    <% for(var i = 0; i < hotTag.length; i++){%>
+                    <li><a target="_blank" href="http://bbs.huoxing24.com/?/topic/<%= hotTag[i].topic_title%>"><%= hotTag[i].topic_title%></a></li>
+                    <%}%>
+                </ul>
+            </div>
+            <div class="attention">
+                <div class="attention-title">
+                    <h5>关注我们</h5>
+                </div>
+                <div class="attention-cont">
+                    <p>
+                        <img src="./img/wf_ewm.jpg" alt="">
+                        <span>王峰十问</span>
+                    </p>
+                    <p>
+                        <img src="./img/hx-ewm.jpg" alt="">
+                        <span>火星财经</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

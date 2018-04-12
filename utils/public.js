@@ -79,6 +79,39 @@ const axiosAjax = (arg) => {
 }
 
 /**
+ * Intro: time format
+ */
+const formatTime = (date, str) => {
+    let _str = !str ? '-' : str
+    const zero = (m) => {
+        return m < 10 ? '0' + m : m
+    }
+    let time = new Date(parseInt(date) * 1000)
+    let y = time.getFullYear()
+    let m = time.getMonth() + 1
+    let d = time.getDate()
+    if (date) {
+        return y + _str + zero(m) + _str + zero(d)
+    } else {
+        return ''
+    }
+}
+const getTime = (publishTime, requestTime, justNow, minuteAgo, hourAgo) => {
+    let limit = parseInt((requestTime - publishTime)) / 1000
+    let content = ''
+    if (limit < 60) {
+        content = justNow
+    } else if (limit >= 60 && limit < 3600) {
+        content = Math.floor(limit / 60) + minuteAgo
+    } else if (limit >= 3600 && limit < 86400) {
+        content = Math.floor(limit / 3600) + hourAgo
+    } else {
+        content = formatTime(publishTime)
+    }
+    return content
+}
+
+/**
  * java: pc接口代理
  */
 const ajaxJavaUrl = 'http://www.huoxing24.com'
@@ -93,11 +126,16 @@ const proxyJavaApi = [
 /**
  * php: bbs接口代理
  */
-const ajaxPhpUrl = 'http://wecenter.huoxing24.vip'
+const ajaxPhpUrl = 'http://bbs.huoxing24.com/'
 const phpPrefix = '/bbs'
 const proxyPhpApi = [
     phpPrefix,
-    phpPrefix + '/account/ajax/profiles_setting'
+    phpPrefix + '/?/api/main',
+    phpPrefix + '/?/',
+    phpPrefix + '/account/ajax/profiles_setting',
+    phpPrefix + '/?/home/ajax/index_actions',
+    phpPrefix + '/home/#all__focus',
+    phpPrefix + '/?/publish/ajax/fetch_question_category/1'
 ]
 
 module.exports = {
@@ -105,5 +143,7 @@ module.exports = {
     ajaxJavaUrl,
     proxyPhpApi,
     proxyJavaApi,
-    axiosAjax
+    axiosAjax,
+    getTime,
+    formatTime
 }
