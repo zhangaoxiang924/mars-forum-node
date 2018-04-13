@@ -12,7 +12,7 @@ import {pageLoadingHide, axiosAjax, proxyUrlBbs, formatTime, publicFunc} from '.
 $(function () {
     pageLoadingHide()
     publicFunc()
-    let imgUrl = 'http://bbs.huoxing24.com/uploads/avatar/'
+    let imgUrl = ''
     let phpUrl = 'http://bbs.huoxing24.com'
 
     const invitationItem = (data, loadMore) => {
